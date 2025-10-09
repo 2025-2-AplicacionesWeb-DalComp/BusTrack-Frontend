@@ -20,7 +20,7 @@
 </script>
 
 <style scoped>
-/* Estilos generales (sin cambios) */
+/* Estilos generales */
 .main-header {
   width: 100%;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -42,12 +42,11 @@
 
 .nav-bar {
   background-color: #b0d159;
-  padding: 15px 0; /* Aumentamos el padding para dar más espacio a los botones */
-}
+  padding: 15px 0;
 
 .nav-bar ul {
   display: flex;
-  justify-content: space-evenly; /* space-evenly da un poco más de aire en los extremos */
+  justify-content: space-evenly;
   align-items: center;
   list-style: none;
   margin: 0;
@@ -57,16 +56,16 @@
 /* === ESTILOS MODIFICADOS PARA LOS BOTONES === */
 .nav-bar li a {
   /* Apariencia del botón */
-  background-color: #789c0a;  /* Color de fondo del botón, igual al título */
-  color: white;               /* Color del texto */
-  padding: 10px 20px;         /* Espaciado interno (alto y ancho) */
-  border-radius: 8px;         /* Bordes redondeados */
-  box-shadow: 0 2px 4px rgba(0,0,0,0.2); /* Sombra para dar profundidad */
+  background-color: #789c0a;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
 
   /* Estilos de texto y decoración */
-  font-family: sans-serif;    /* Cambiamos a una fuente más legible para botones */
+  font-family: sans-serif;
   font-weight: bold;
-  text-decoration: none;      /* Quita el subrayado del enlace */
+  text-decoration: none;
   text-align: center;
 
   /* Transición para el efecto hover */
@@ -75,8 +74,8 @@
 
 /* Efecto al pasar el cursor sobre un botón */
 .nav-bar li a:hover {
-  background-color: #5e7a08;  /* Un verde un poco más oscuro */
-  transform: translateY(-2px); /* Eleva ligeramente el botón */
-  box-shadow: 0 4px 6px rgba(0,0,0,0.3); /* Aumenta la sombra para el efecto */
+  background-color: #5e7a08;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 6px rgba(0,0,0,0.3);
 }
 </style>
