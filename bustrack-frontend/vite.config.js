@@ -1,18 +1,23 @@
 import { fileURLToPath, URL } from 'node:url'
 
-import { defineConfig } from 'vite'
-import vue from '@vitejs/plugin-vue'
-import vueDevTools from 'vite-plugin-vue-devtools'
+// javascript
+import { defineConfig } from 'vite';
+import vue from '@vitejs/plugin-vue';
 
-// https://vite.dev/config/
-export default defineConfig({
-  plugins: [
-    vue(),
-    vueDevTools(),
-  ],
-  resolve: {
-    alias: {
-      '@': fileURLToPath(new URL('./src', import.meta.url))
-    },
-  },
-})
+export default defineConfig(async ({ mode }) => {
+    const plugins = [vue()];
+
+    if (mode === 'development') {
+        try {
+            const mod = await import('vite-plugin-vue-devtools');
+            const devtools = mod?.default ?? mod;
+            if (typeof devtools === 'function') plugins.push(devtools());
+        } catch (err) {
+            // Si no está instalado, solo mostrar advertencia y seguir
+            // para no romper el servidor de desarrollo.
+            console.warn('Advertencia: vite-plugin-vue-devtools no encontrado. Ejecuta `npm i -D vite-plugin-vue-devtools` si lo necesitas.');
+        }
+    }
+
+    return { plugins };
+});

@@ -21,6 +21,12 @@ export class BaseEndpoint {
         return this.http.get(`${this.endpointPath}/${id}`);
     }
 
+    getByName(name) {
+        return this.http.get(this.endpointPath, {
+            params: { name: String(name) }
+        });
+    }
+
     create(resource) {
         return this.http.post(this.endpointPath, resource);
     }
