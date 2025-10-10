@@ -3,7 +3,13 @@ import Home from "./shared/presentation/views/home.vue";
 import PageNotFound from "./shared/presentation/views/page-not-found.vue";
 import LoginPage from '@/app/presentation/pages/LoginPage.vue'
 import RegisterPage from '@/app/presentation/pages/RegisterPage.vue'
-import HomePage from '@/app/presentation/pages/HomePage.vue'  
+import HomePage from '@/app/presentation/pages/HomePage.vue'
+import FavoriteRoutes from "@/publishing/presentation/views/profile/components/favorite-routes.vue";
+import AccountSettings from "@/publishing/presentation/views/profile/components/account-settings.vue";
+import TravelHistory from "@/publishing/presentation/views/profile/components/travel-history.vue";
+import Notifications from "@/publishing/presentation/views/notifications/notifications.vue";
+import BusStops from "@/publishing/presentation/views/bus-stops/bus-stops.vue";
+import Profile from "@/publishing/presentation/views/profile/profile.vue";
 
 
 const routes = [
@@ -17,14 +23,14 @@ const routes = [
 
   // Secciones (post login)
   { path: '/dashboard', name: 'dashboard', component: Home, meta: { requiresAuth: true } },
-  { path: '/search-route', name: 'search-route', component: SearchRoute, meta: { requiresAuth: true } }, // (antes: /search-rout)
+  //{ path: '/search-route', name: 'search-route', component: SearchRoute, meta: { requiresAuth: true } }, // (antes: /search-rout)
   { path: '/notifications', name: 'notifications', component: Notifications, meta: { requiresAuth: true } },
   { path: '/bus-stops', name: 'bus-stops', component: BusStops, meta: { requiresAuth: true } },
   { path: '/profile', name: 'profile', component: Profile, meta: { requiresAuth: true } },
   { path: '/profile/favorite-routes', name: 'profile-favorite-routes', component: FavoriteRoutes, meta: { requiresAuth: true } },
   { path: '/profile/account-settings', name: 'profile-account-settings', component: AccountSettings, meta: { requiresAuth: true } },
   { path: '/profile/travel-history', name: 'profile-travel-history', component: TravelHistory, meta: { requiresAuth: true } },
-  { path: '/profile/notifications', name: 'profile-notifications', component: ProfileNotifications, meta: { requiresAuth: true } },
+  //{ path: '/profile/notifications', name: 'profile-notifications', component: ProfileNotifications, meta: { requiresAuth: true } },
 
  
   { path: '/:pathMatch(.*)*', name: 'page-not-found', component: PageNotFound, meta: { public: true } },
@@ -35,7 +41,8 @@ const router = createRouter({
   routes,
 })
 
-// Guard sencillo 
+/*
+// Guard sencillo DESACTIVADO TEMPORALMENTE
 router.beforeEach((to, from, next) => {
   const isAuth = !!localStorage.getItem('token') // o revisa tu store
   if (!to.meta?.public && !isAuth) {
@@ -48,5 +55,6 @@ router.beforeEach((to, from, next) => {
   }
   next()
 })
+*/
 
 export default router

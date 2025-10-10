@@ -3,6 +3,8 @@ import { fileURLToPath, URL } from 'node:url'
 // javascript
 import { defineConfig } from 'vite';
 import vue from '@vitejs/plugin-vue';
+// 1. IMPORTA EL MÓDULO 'path'
+import path from 'path';
 
 export default defineConfig(async ({ mode }) => {
     const plugins = [vue()];
@@ -19,5 +21,14 @@ export default defineConfig(async ({ mode }) => {
         }
     }
 
-    return { plugins };
+    // El objeto que retornas ahora debe incluir también la clave 'resolve'
+    return {
+        plugins,
+        // 2. AÑADE ESTA SECCIÓN PARA EL ALIAS
+        resolve: {
+            alias: {
+                '@': path.resolve(__dirname, './src'),
+            }
+        }
+    };
 });
