@@ -4,7 +4,6 @@
       <h1>Paraderos Cercanos</h1>
 
       <div class="main-layout">
-        <!-- Lista de Paraderos - IZQUIERDA -->
         <div class="paraderos-list">
           <div class="paradero-card" v-for="paradero in paraderos" :key="paradero.id">
             <div class="card-header">
@@ -37,7 +36,6 @@
           </div>
         </div>
 
-        <!-- Mapa - DERECHA (más grande y centrado) -->
         <div class="map-section" v-if="!loading">
           <GoogleMap
               :center="mapCenter"
@@ -64,7 +62,6 @@ const paraderos = ref([])
 const currentLocation = ref(null)
 const loading = ref(true)
 
-// Datos de ejemplo (mientras arreglamos la API)
 const sampleData = {
   paraderos: [
     {
@@ -93,24 +90,20 @@ const sampleData = {
   }
 }
 
-// Centro del mapa (UPC San Miguel)
 const mapCenter = computed(() => ({
   lat: -12.084180,
   lng: -77.077300
 }))
 
-// Marcadores para el mapa
 const mapMarkers = computed(() => {
   const markers = []
 
-  // Marcador de ubicación actual
   markers.push({
     ...sampleData.currentLocation,
     name: "Tu ubicación",
     isCurrentLocation: true
   })
 
-  // Marcadores de paraderos
   sampleData.paraderos.forEach(paradero => {
     markers.push({
       ...paradero,
@@ -123,16 +116,13 @@ const mapMarkers = computed(() => {
 
 onMounted(async () => {
   try {
-    // Usar datos de ejemplo por ahora
     paraderos.value = sampleData.paraderos
     currentLocation.value = sampleData.currentLocation
 
-    // Pequeño delay para mostrar loading
     loading.value = false
 
   } catch (error) {
     console.error('Error:', error)
-    // En caso de error, usar datos de ejemplo
     paraderos.value = sampleData.paraderos
     loading.value = false
   }
@@ -167,7 +157,6 @@ const setNotification = (paradero) => {
   font-size: 2em;
 }
 
-/* Layout principal - Paraderos a la izquierda, Mapa a la derecha */
 .main-layout {
   display: flex;
   gap: 40px;
@@ -175,23 +164,20 @@ const setNotification = (paradero) => {
   min-height: 700px;
 }
 
-/* Lista de paraderos - IZQUIERDA */
 .paraderos-list {
-  flex: 0 0 450px; /* Ancho fijo para los paraderos */
-  margin-top: 20px; /* Baja un poco los paraderos */
+  flex: 0 0 450px;
+  margin-top: 20px;
 }
 
-/* Mapa - DERECHA (más grande y centrado) */
 .map-section {
   flex: 1;
-  height: 650px; /* Más alto */
+  height: 650px;
   display: flex;
-  align-items: center; /* Centra verticalmente */
-  justify-content: center; /* Centra horizontalmente */
-  margin-top: 20px; /* Baja el mapa para centrarlo con los paraderos */
+  align-items: center;
+  justify-content: center;
+  margin-top: 20px;
 }
 
-/* Asegurar que el mapa ocupe todo el espacio disponible */
 .map-section >>> .google-map-container,
 .map-section >>> .map-container,
 .map-section >>> .map-fallback {
@@ -199,7 +185,6 @@ const setNotification = (paradero) => {
   width: 100% !important;
 }
 
-/* Tarjetas de paraderos */
 .paradero-card {
   background: white;
   border-radius: 12px;

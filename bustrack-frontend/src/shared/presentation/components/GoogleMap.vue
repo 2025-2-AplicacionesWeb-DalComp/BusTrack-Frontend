@@ -1,6 +1,5 @@
 <template>
   <div class="simple-map-container">
-    <!-- Imagen PNG del mapa -->
     <div class="map-image-container">
       <img
           src="/mapa-paraderos.png"
@@ -32,20 +31,20 @@ const showFallback = ref(false)
   border: 2px solid #e0e0e0;
   overflow: hidden;
   width: 100%;
-  height: 100%; /* Ocupa todo el espacio del contenedor padre */
+  height: 100%;
   display: flex;
   flex-direction: column;
 }
 
 .map-image-container {
   width: 100%;
-  height: 100%; /* Ocupa toda la altura del contenedor */
+  height: 100%;
   background: #f5f5f5;
   display: flex;
   align-items: center;
   justify-content: center;
   position: relative;
-  min-height: 500px; /* Altura mínima más grande */
+  min-height: 500px;
 }
 
 .map-image {
@@ -85,5 +84,4 @@ const showFallback = ref(false)
   font-size: 0.9em;
 }
 
-/* Eliminé el stops-list ya que no lo estás usando en el template */
 </style>
