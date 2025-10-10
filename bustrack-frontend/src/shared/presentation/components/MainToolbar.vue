@@ -6,7 +6,7 @@
 
     <nav class="nav-bar">
       <ul>
-        <li><router-link to="/buscar-ruta">Buscar Ruta</router-link></li>
+        <router-link to="/search">Buscar Ruta</router-link>
         <li><router-link to="/notificaciones">Notificaciones</router-link></li>
         <li><router-link to="/paraderos">Paraderos Cercanos</router-link></li>
         <li><router-link to="/perfil">Perfil</router-link></li>
@@ -15,11 +15,30 @@
   </header>
 </template>
 
-<script setup>
-// No se necesita lógica aquí
-</script>
-
 <style scoped>
+
+/* Aplicamos los estilos de botón directamente al enlace (<a>)
+   que genera <router-link> para mantener la apariencia. */
+.nav-bar li a {
+  display: inline-block; /* Necesario para aplicar padding correctamente */
+  background-color: #789c0a;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+  font-family: sans-serif;
+  font-weight: bold;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.nav-bar li a:hover {
+  background-color: #5e7a08;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+
 /* Estilos generales */
 .main-header {
   width: 100%;

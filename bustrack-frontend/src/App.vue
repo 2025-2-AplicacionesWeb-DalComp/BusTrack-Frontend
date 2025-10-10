@@ -10,6 +10,9 @@ defineOptions({
   <div id="app">
     <MainToolbar />
 
+    <main>
+      <router-view></router-view>
+    </main>
   </div>
 </template>
 

@@ -30,15 +30,26 @@ const useRouteStore = defineStore('searchroute', () => {
      * Cantidad de rutas.
      * @type {import('vue').ComputedRef<number>}
      */
+
+    const isLoading = ref(false);
+
     const routesCount = computed(() => (routesLoaded.value ? routes.value.length : 0));
 
-    function fetchRoutes() {
-        searchRouteApi.getRoutes().then(response => {
-            routes.value = RouteAssembler.toEntitiesFromResponse(response.data);
-            routesLoaded.value = true;
-        }).catch(error => {
-            errors.value.push(error);
-        });
+    function fetchRoutes(searchText = '') {
+        // 2. AHORA 'isLoading' SÍ ESTÁ DEFINIDO Y FUNCIONARÁ
+        isLoading.value = true;
+
+        searchRouteApi.getRoutes(searchText)
+            .then(response => {
+                routes.value = RouteAssembler.toEntitiesFromResponse(response.data);
+                routesLoaded.value = true;
+            })
+            .catch(error => {
+                errors.value.push(error);
+            })
+            .finally(() => {
+                isLoading.value = false;
+            });
     }
 
     function getRouteByName(name) {
@@ -86,6 +97,7 @@ const useRouteStore = defineStore('searchroute', () => {
         errors,
         routesLoaded,
         routesCount,
+        isLoading,
         fetchRoutes,
         getRouteByName,
         addRoute,

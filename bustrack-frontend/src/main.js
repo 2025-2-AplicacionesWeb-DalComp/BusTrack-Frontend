@@ -35,7 +35,10 @@ import {
     Toolbar,
     Tooltip
 } from "primevue";
-//import router y pinia
+
+// 1. IMPORTAR ROUTER Y PINIA
+import router from './router'; // Asegúrate que la ruta sea correcta
+import { createPinia } from 'pinia';
 
 
 createApp(App)
@@ -44,6 +47,11 @@ createApp(App)
     .use(ConfirmationService)
     .use(DialogService)
     .use(ToastService)
+
+    // 2. USAR ROUTER Y PINIA
+    .use(router)
+    .use(createPinia())
+
     .component('pv-button',         Button)
     .component('pv-card',           Card)
     .component('pv-column',         Column)
@@ -69,4 +77,3 @@ createApp(App)
     .component('pv-toast',          Toast)
     .directive('tooltip',           Tooltip)
     .mount('#app')
-    //import router y pinia
