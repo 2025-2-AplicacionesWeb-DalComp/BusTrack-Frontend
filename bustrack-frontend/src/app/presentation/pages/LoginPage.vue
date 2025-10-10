@@ -34,16 +34,16 @@ async function onLogin(payload) {
   min-height: 100vh;
   display: flex;
   align-items: center;
-  justify-content: center;   /* centro el conjunto logo + card */
-  gap: 40px;                 /* separación base entre logo y card */
+  justify-content: center;   
+  gap: 40px;                 
   padding: 24px;
   background: #d6ec9c;
 }
 
-/* --- Logo box (tamaño y forma) --- */
+/* --- Logo box  --- */
 .brand{
-  /* mueve el logo hacia la izquierda (ajusta este valor a tu gusto) */
-  --nudge: 40px;             /* prueba con 10px, 20px, 40px… */
+  
+  --nudge: 40px;           
   transform: translateX(calc(-1 * var(--nudge)));
 }
 
@@ -67,10 +67,10 @@ async function onLogin(payload) {
   z-index: 1;
 }
 
-/* En móvil, quita el empuje para que todo quede centrado */
+
 @media (max-width: 960px){
   .screen{ flex-direction: column; gap: 24px; }
-  .brand{ transform: none; }   /* sin nudge en pantallas pequeñas */
+  .brand{ transform: none; }   
   .logo-box{ width: min(70vw, 340px); }
 }
 </style>
