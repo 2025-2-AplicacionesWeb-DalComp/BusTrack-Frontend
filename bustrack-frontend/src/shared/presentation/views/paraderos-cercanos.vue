@@ -3,45 +3,47 @@
     <div class="content">
       <h1>Paraderos Cercanos</h1>
 
-      <!-- Mapa -->
-      <div class="map-section" v-if="!loading">
-        <GoogleMap
-            :center="mapCenter"
-            :markers="mapMarkers"
-            :zoom="15"
-        />
-      </div>
-
-      <!-- Lista de Paraderos -->
-      <div class="paraderos-list">
-        <div class="paradero-card" v-for="paradero in paraderos" :key="paradero.id">
-          <div class="card-header">
-            <h3>{{ paradero.name }}</h3>
-            <span class="distance">{{ paradero.distance }}</span>
-          </div>
-          <div class="card-content">
-            <p class="address">📍 {{ paradero.address }}</p>
-            <div class="buses-section">
-              <h4>Buses que pasan:</h4>
-              <div class="buses-grid">
-                <span
-                    v-for="ruta in paradero.routes"
-                    :key="ruta"
-                    class="bus-tag"
-                >
-                  {{ ruta }}
-                </span>
+      <div class="main-layout">
+        <!-- Lista de Paraderos - IZQUIERDA -->
+        <div class="paraderos-list">
+          <div class="paradero-card" v-for="paradero in paraderos" :key="paradero.id">
+            <div class="card-header">
+              <h3>{{ paradero.name }}</h3>
+              <span class="distance">{{ paradero.distance }}</span>
+            </div>
+            <div class="card-content">
+              <p class="address">📍 {{ paradero.address }}</p>
+              <div class="buses-section">
+                <h4>Buses que pasan:</h4>
+                <div class="buses-grid">
+                  <span
+                      v-for="ruta in paradero.routes"
+                      :key="ruta"
+                      class="bus-tag"
+                  >
+                    {{ ruta }}
+                  </span>
+                </div>
               </div>
             </div>
+            <div class="card-actions">
+              <button class="btn btn-primary" @click="openDirections(paradero)">
+                Cómo llegar
+              </button>
+              <button class="btn btn-secondary" @click="setNotification(paradero)">
+                Notificar llegada
+              </button>
+            </div>
           </div>
-          <div class="card-actions">
-            <button class="btn btn-primary" @click="openDirections(paradero)">
-              Cómo llegar
-            </button>
-            <button class="btn btn-secondary" @click="setNotification(paradero)">
-              Notificar llegada
-            </button>
-          </div>
+        </div>
+
+        <!-- Mapa - DERECHA (más grande y centrado) -->
+        <div class="map-section" v-if="!loading">
+          <GoogleMap
+              :center="mapCenter"
+              :markers="mapMarkers"
+              :zoom="15"
+          />
         </div>
       </div>
 
@@ -154,7 +156,7 @@ const setNotification = (paradero) => {
 }
 
 .content {
-  max-width: 800px;
+  max-width: 1400px;
   margin: 0 auto;
 }
 
@@ -165,10 +167,39 @@ const setNotification = (paradero) => {
   font-size: 2em;
 }
 
-.map-section {
-  margin-bottom: 30px;
+/* Layout principal - Paraderos a la izquierda, Mapa a la derecha */
+.main-layout {
+  display: flex;
+  gap: 40px;
+  align-items: flex-start;
+  min-height: 700px;
 }
 
+/* Lista de paraderos - IZQUIERDA */
+.paraderos-list {
+  flex: 0 0 450px; /* Ancho fijo para los paraderos */
+  margin-top: 20px; /* Baja un poco los paraderos */
+}
+
+/* Mapa - DERECHA (más grande y centrado) */
+.map-section {
+  flex: 1;
+  height: 650px; /* Más alto */
+  display: flex;
+  align-items: center; /* Centra verticalmente */
+  justify-content: center; /* Centra horizontalmente */
+  margin-top: 20px; /* Baja el mapa para centrarlo con los paraderos */
+}
+
+/* Asegurar que el mapa ocupe todo el espacio disponible */
+.map-section >>> .google-map-container,
+.map-section >>> .map-container,
+.map-section >>> .map-fallback {
+  height: 100% !important;
+  width: 100% !important;
+}
+
+/* Tarjetas de paraderos */
 .paradero-card {
   background: white;
   border-radius: 12px;
@@ -268,5 +299,43 @@ const setNotification = (paradero) => {
   padding: 40px;
   gap: 10px;
   color: #666;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .main-layout {
+    gap: 30px;
+  }
+
+  .paraderos-list {
+    flex: 0 0 400px;
+  }
+
+  .map-section {
+    height: 550px;
+  }
+}
+
+@media (max-width: 768px) {
+  .main-layout {
+    flex-direction: column;
+    gap: 20px;
+    min-height: auto;
+  }
+
+  .paraderos-list {
+    flex: none;
+    width: 100%;
+    margin-top: 0;
+  }
+
+  .map-section {
+    flex: 1;
+    height: 700px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+  }
 }
 </style>
