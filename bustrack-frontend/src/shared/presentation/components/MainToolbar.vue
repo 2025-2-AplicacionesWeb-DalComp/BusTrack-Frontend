@@ -43,6 +43,7 @@
 .nav-bar {
   background-color: #b0d159;
   padding: 15px 0;
+} /* <--- AQUÍ FALTABA ESTA LLAVE DE CIERRE */
 
 .nav-bar ul {
   display: flex;
@@ -76,6 +77,6 @@
 .nav-bar li a:hover {
   background-color: #5e7a08;
   transform: translateY(-2px);
-  box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
 }
 </style>

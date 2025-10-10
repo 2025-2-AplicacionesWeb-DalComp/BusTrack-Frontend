@@ -15,6 +15,10 @@ export class SearchRouteApi extends BaseApi {
         this.#routesEndpoint =  new BaseEndpoint(this.#routesEndpoint);
     }
 
+    getRoutes(){
+        return this.#routesEndpoint.getAll();
+    }
+
     getRouteByName(){
         return this.#routesEndpoint.getByName(name);
     }
@@ -26,6 +30,16 @@ export class SearchRouteApi extends BaseApi {
     deleteRoute(id){
         return this.#routesEndpoint.delete(id);
     }
+
+    updateRoute(resource){
+        return this.#routesEndpoint.update(id, resource);
+    }
+
+    createRoute(resource){
+        return this.#routesEndpoint.create(resource);
+    }
+
+
 
 
 }

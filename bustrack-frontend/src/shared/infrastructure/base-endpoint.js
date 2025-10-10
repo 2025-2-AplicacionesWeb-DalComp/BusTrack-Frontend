@@ -22,9 +22,7 @@ export class BaseEndpoint {
     }
 
     getByName(name) {
-        return this.http.get(this.endpointPath, {
-            params: { name: String(name) }
-        });
+        return this.http.get(`${this.endpointPath}/${name}`);
     }
 
     create(resource) {
