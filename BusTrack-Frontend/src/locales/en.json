@@ -30,7 +30,38 @@
     "go-home": "Go Home"
   },
 
-  "_note": "faltan agregar contenido a medida que se programe...",
+  "profile": {
+    "title": "Profile",
+    "name": "Name",
+    "email": "Gmail",
+    "password": "Password",
+    "favoriteRoutes": "Favorite Routes",
+    "travelHistory": "Travel History",
+    "notifications": "Notifications",
+    "accountSettings": "Account Settings",
+    "details": "Details",
+    "logout": "Logout"
+  },
+
+  "favoriteRoutes": {
+    "back": "Back",
+    "title": "Favorite Routes",
+    "viewDetails": "View Details",
+    "remove": "Remove",
+    "noRoutes": "You don't have any favorite routes saved"
+  },
+  "accountSettings": {
+    "back": "Back",
+    "title": "Account Settings",
+    "changePhoto": "Change Photo",
+    "name": "Name",
+    "email": "Gmail",
+    "password": "Password",
+    "saveChanges": "Save Changes",
+    "namePlaceholder": "Enter your name",
+    "emailPlaceholder": "Enter your email",
+    "passwordPlaceholder": "Enter your new password"
+  },
 
   "errors": {
     "occurred": "Errors occurred"
