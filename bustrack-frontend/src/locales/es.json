@@ -52,7 +52,7 @@
   },
   "auth": {
     "login": {
-      "title": "Log In",
+      "title": "Inicia sesión",
       "username": "Usuario",
       "password": "Contraseña",
       "forgot": "¿Olvidaste tu contraseña?",
@@ -64,8 +64,11 @@
       "title": "Crea tu cuenta",
       "continueWithGoogle": "Continúa con Google",
       "email": "Correo",
+      "emailPlaceholder": "Correo",
       "username": "Usuario",
+      "usernamePlaceholder": "Usuario",
       "password": "Contraseña",
+      "passwordPlaceholder": "Contraseña",
       "create": "Crear Cuenta",
       "haveAccount": "¿Ya tienes una cuenta?",
       "signIn": "Inicia Sesión"
