@@ -21,7 +21,12 @@
 
   "home": {
     "title": "Bienvenido",
-    "content": "Bienvenido a BusTrack."
+    "content": "Bienvenido a BusTrack.",
+    "currentLocation": "UBICACIÓN ACTUAL",
+    "addressLabel": "Dirección",
+    "map": {
+      "loading": "Cargando mapa…"
+    }
   },
 
   "page-not-found": {
@@ -34,5 +39,42 @@
 
   "errors": {
     "occurred": "Ocurrieron errores"
+  },
+
+  "brand": {
+    "name": "BusTrack"
+  },
+  "nav": {
+    "searchRoute": "Buscar Ruta",
+    "notifications": "Notificaciones",
+    "nearbyStops": "Paraderos Cercanos",
+    "profile": "Perfil"
+  },
+  "auth": {
+    "login": {
+      "title": "Log In",
+      "username": "Usuario",
+      "password": "Contraseña",
+      "forgot": "¿Olvidaste tu contraseña?",
+      "continue": "Continuar",
+      "noAccount": "¿No tienes una cuenta?",
+      "register": "Regístrate"
+    },
+    "register": {
+      "title": "Crea tu cuenta",
+      "continueWithGoogle": "Continúa con Google",
+      "email": "Correo",
+      "username": "Usuario",
+      "password": "Contraseña",
+      "create": "Crear Cuenta",
+      "haveAccount": "¿Ya tienes una cuenta?",
+      "signIn": "Inicia Sesión"
+    },
+    "error": {
+      "usernameRequired": "Ingresa tu usuario",
+      "passwordRequired": "Ingresa tu contraseña",
+      "emailRequired": "Ingresa tu correo",
+      "emailInvalid": "Ingresa un correo válido"
+    }
   }
 }
