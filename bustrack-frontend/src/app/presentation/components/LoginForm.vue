@@ -1,26 +1,32 @@
 <script setup lang="js">
+import { useI18n } from 'vue-i18n'
 import { computed, reactive } from 'vue'
+import LanguageSwitcher from "@/shared/presentation/components/language-switcher.vue";
 
-// Props (solo JS)
+const { t } = useI18n()
+
 const props = defineProps({
   loading: { type: Boolean, default: false },
   defaultUsername: { type: String, default: '' },
 })
 
-// Emits (solo nombres de eventos en JS)
+
 const emit = defineEmits(['submit'])
 
-// Estado local del formulario
+
 const form = reactive({
   username: props.defaultUsername || '',
   password: '',
 })
 
-// Validaciones muy básicas
+
+
 const errors = reactive({
   username: null,
   password: null,
 })
+
+
 
 function validate() {
   errors.username = !form.username ? 'Ingresa tu usuario' : null
@@ -33,13 +39,21 @@ function onSubmit() {
   emit('submit', { username: form.username, password: form.password })
 }
 
-// Accesibilidad: desactivar botón si inválido o loading
 const canSubmit = computed(() => !props.loading)
 </script>
 
 <template>
+  <div>
+    <div class="language-switcher">
+      <LanguageSwitcher />
+    </div>
   <form class="login-form" @submit.prevent="onSubmit" novalidate>
-    <h2 class="title">Log In</h2>
+
+
+    <div class="form-head">
+      <h2 class="title">{{ t('auth.login.title') }}</h2>
+    </div>
+
 
     <!-- Usuario -->
     <label class="field">
@@ -49,8 +63,8 @@ const canSubmit = computed(() => !props.loading)
           autocomplete="username"
           v-model.trim="form.username"
           :aria-invalid="!!errors.username"
-          aria-label="Usuario"
-          placeholder="Usuario"
+          :aria-label="t('auth.login.username')"
+          :placeholder="t('auth.login.username')"
       />
       <small v-if="errors.username" class="error">{{ errors.username }}</small>
     </label>
@@ -63,29 +77,39 @@ const canSubmit = computed(() => !props.loading)
           autocomplete="current-password"
           v-model="form.password"
           :aria-invalid="!!errors.password"
-          aria-label="Contraseña"
-          placeholder="Contraseña"
+          :aria-label="t('auth.login.password')"
+          :placeholder="t('auth.login.password')"
       />
       <small v-if="errors.password" class="error">{{ errors.password }}</small>
     </label>
 
     <div class="aux">
-      <router-link to="/forgot" class="link">¿Olvidaste tu contraseña?</router-link>
+      <span class="link disabled" aria-disabled="true">
+    {{ t('auth.login.forgot') }}
+  </span>
     </div>
 
     <button class="btn" type="submit" :disabled="!canSubmit">
-      {{ props.loading ? 'Continuando…' : 'Continuar' }}
+      {{ props.loading ? t('auth.login.continuing') : t('auth.login.continue') }}
     </button>
 
     <p class="hint">
-      ¿No tienes una cuenta?
-      <router-link to="/register" class="link">Regístrate</router-link>
+      {{ t('auth.login.noAccount') }}
+      <router-link to="/register" class="link">{{ t('auth.login.register') }}</router-link>
     </p>
 
   </form>
+  </div>
 </template>
 
 <style scoped>
+.language-switcher {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 1000;
+}
+
 .login-form {
   display: flex;
   flex-direction: column;
