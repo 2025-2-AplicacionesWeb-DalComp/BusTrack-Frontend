@@ -34,5 +34,14 @@
 
   "errors": {
     "occurred": "Errors occurred"
+  },
+  "paraderos": {
+    "title": "Nearby Stops",
+    "loading": "Loading nearby stops...",
+    "error": "Could not load nearby stops",
+    "empty": "No nearby stops found",
+    "coordinates": "Coordinates",
+    "viewMap": "View on map",
+    "notifyArrival": "Notify arrival"
   }
 }

@@ -34,5 +34,14 @@
 
   "errors": {
     "occurred": "Ocurrieron errores"
+  },
+  "paraderos": {
+    "title": "Paraderos Cercanos",
+    "loading": "Cargando paraderos cercanos...",
+    "error": "No se pudieron cargar los paraderos cercanos",
+    "empty": "No se encontraron paraderos cercanos",
+    "coordinates": "Coordenadas",
+    "viewMap": "Ver en mapa",
+    "notifyArrival": "Notificar llegada"
   }
 }

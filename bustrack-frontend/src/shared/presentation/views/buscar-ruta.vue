@@ -1,0 +1,12 @@
+<template>
+  <div class="page">
+    <h1>Buscar Ruta</h1>
+    <p>Funcionalidad en desarrollo...</p>
+  </div>
+</template>
+
+<style scoped>
+.page {
+  padding: 20px;
+}
+</style>

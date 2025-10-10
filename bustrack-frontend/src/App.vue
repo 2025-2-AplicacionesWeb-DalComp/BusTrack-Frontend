@@ -1,4 +1,5 @@
 <script setup>
+// Ruta CORRECTA según tu estructura
 import MainToolbar from './shared/presentation/components/MainToolbar.vue';
 
 defineOptions({
@@ -9,7 +10,7 @@ defineOptions({
 <template>
   <div id="app">
     <MainToolbar />
-
+    <router-view></router-view>
   </div>
 </template>
 
@@ -17,6 +18,6 @@ defineOptions({
 /* Estilos globales para app */
 body {
   margin: 0;
-  font-family: sans-serif; /* Fuente base para el resto de la app */
+  font-family: sans-serif;
 }
 </style>

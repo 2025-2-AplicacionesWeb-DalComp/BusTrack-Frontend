@@ -6,6 +6,7 @@ import 'primeflex/primeflex.css';
 import 'primeicons/primeicons.css';
 import Material from '@primeuix/themes/material';
 import PrimeVue from 'primevue/config';
+import router from "./router";
 import {
     Button,
     Card,
@@ -40,6 +41,7 @@ import {
 
 createApp(App)
     .use(i18n)
+    .use(router)
     .use(PrimeVue, {theme: { preset: Material}, ripple: true})
     .use(ConfirmationService)
     .use(DialogService)
