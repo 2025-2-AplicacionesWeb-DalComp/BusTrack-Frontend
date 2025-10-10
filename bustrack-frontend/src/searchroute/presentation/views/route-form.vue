@@ -11,9 +11,15 @@ const store = useRouteStore();
 // Vinculamos esta variable al input del formulario
 const searchText = ref('');
 
-// Función que se ejecuta al hacer clic en el botón "Buscar"
+
+
+// 1. AÑADE ESTA VARIABLE DE ESTADO
+//    Será 'false' al inicio y solo se volverá 'true' cuando el usuario busque.
+const searchAttempted = ref(false);
+
 const handleSearch = () => {
-  // Llama a la acción del store con el texto actual del input
+  // 2. MARCA QUE SE HA INTENTADO UNA BÚSQUEDA
+  searchAttempted.value = true;
   store.fetchRoutes(searchText.value);
 };
 
@@ -25,6 +31,7 @@ onMounted(() => {
 
 <template>
   <div class="search-container">
+
     <div class="search-form">
       <div class="input-group">
         <label for="search-input">Desde</label>
@@ -42,6 +49,11 @@ onMounted(() => {
     </div>
 
     <div class="results-container">
+
+      <p class="success-message" v-if="searchAttempted && store.routes.length > 0">
+        ✅ Ruta encontrada satisfactoriamente
+      </p>
+
       <ul v-if="store.routes.length > 0">
         <li v-for="route in store.routes" :key="route.id">
           <h3>{{ route.name }}</h3>
@@ -50,10 +62,11 @@ onMounted(() => {
         </li>
       </ul>
 
-      <p v-else-if="!store.isLoading">
+      <p v-else-if="searchAttempted && !store.isLoading">
         No se encontraron rutas.
       </p>
     </div>
+
   </div>
 </template>
 
@@ -136,5 +149,16 @@ button:disabled {
 .results-container h3 {
   margin: 0 0 10px 0;
   color: #3b4a1a;
+}
+
+
+/* Estilo para el mensaje de éxito */
+.success-message {
+  color: #2e7d32; /* Un verde más oscuro */
+  font-weight: bold;
+  background-color: #e8f5e9;
+  border-left: 5px solid #4caf50;
+  padding: 1rem;
+  border-radius: 4px;
 }
 </style>
