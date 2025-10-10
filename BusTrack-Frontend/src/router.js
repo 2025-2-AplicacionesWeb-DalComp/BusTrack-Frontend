@@ -31,7 +31,7 @@ const routes = [
   { path: '/profile/favorite-routes', name: 'profile-favorite-routes', component: FavoriteRoutes, meta: { requiresAuth: true } },
   { path: '/profile/account-settings', name: 'profile-account-settings', component: AccountSettings, meta: { requiresAuth: true } },
   { path: '/profile/travel-history', name: 'profile-travel-history', component: TravelHistory, meta: { requiresAuth: true } },
-  //{ path: '/profile/notifications', name: 'profile-notifications', component: ProfileNotifications, meta: { requiresAuth: true } },
+  { path: '/profile/notifications', name: 'profile-notifications', component: PageNotFound, meta: { requiresAuth: true } },
 
  
   { path: '/:pathMatch(.*)*', name: 'page-not-found', component: PageNotFound, meta: { public: true } },
