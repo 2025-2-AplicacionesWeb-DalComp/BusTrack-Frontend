@@ -6,7 +6,7 @@
 
     <nav class="nav-bar">
       <ul>
-        <li><router-link to="/search-rout">Buscar Ruta</router-link></li>
+        <li><router-link to="/search-route">Buscar Ruta</router-link></li>
         <li><router-link to="/notifications">Notificaciones</router-link></li>
         <li><router-link to="/bus-stops">Paraderos Cercanos</router-link></li>
         <li><router-link to="/profile">Perfil</router-link></li>

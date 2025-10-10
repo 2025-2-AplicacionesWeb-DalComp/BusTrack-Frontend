@@ -10,6 +10,7 @@ import TravelHistory from "@/publishing/presentation/views/profile/components/tr
 import Notifications from "@/publishing/presentation/views/notifications/notifications.vue";
 import BusStops from "@/publishing/presentation/views/bus-stops/bus-stops.vue";
 import Profile from "@/publishing/presentation/views/profile/profile.vue";
+import RouteForm from "@/searchroute/presentation/views/route-form.vue";
 
 
 const routes = [
@@ -23,7 +24,7 @@ const routes = [
 
   // Secciones (post login)
   { path: '/dashboard', name: 'dashboard', component: Home, meta: { requiresAuth: true } },
-  //{ path: '/search-route', name: 'search-route', component: SearchRoute, meta: { requiresAuth: true } }, // (antes: /search-rout)
+  { path: '/search-route', name: 'search-route', component: RouteForm, meta: { requiresAuth: true } }, // (antes: /search-rout)
   { path: '/notifications', name: 'notifications', component: Notifications, meta: { requiresAuth: true } },
   { path: '/bus-stops', name: 'bus-stops', component: BusStops, meta: { requiresAuth: true } },
   { path: '/profile', name: 'profile', component: Profile, meta: { requiresAuth: true } },

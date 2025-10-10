@@ -36,6 +36,7 @@ import {
     Toolbar,
     Tooltip
 } from "primevue";
+import { createPinia } from 'pinia'
 
 createApp(App)
     .use(i18n)
@@ -44,6 +45,7 @@ createApp(App)
     .use(ConfirmationService)
     .use(DialogService)
     .use(ToastService)
+    .use(createPinia())
     .component('pv-button',         Button)
     .component('pv-card',           Card)
     .component('pv-column',         Column)
