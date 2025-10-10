@@ -1,10 +1,12 @@
 <script setup lang="js">
 import { reactive, computed } from 'vue'
 import { useRouter } from 'vue-router'
+import LanguageSwitcher from "@/shared/presentation/components/language-switcher.vue";
+import { useI18n } from 'vue-i18n'
 
 const router = useRouter()
+const { t } = useI18n()
 
-// emits por si quieres manejarlo desde arriba
 const emit = defineEmits(['submit'])
 
 const form = reactive({
@@ -25,6 +27,10 @@ function isEmail(v){
   return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v)
 }
 
+const props = defineProps({
+  loading: { type: Boolean, default: false },
+})
+
 function validate(){
   errors.email = !form.email ? 'Ingresa tu correo' : (!isEmail(form.email) ? 'Correo inválido' : null)
   errors.username = !form.username ? 'Ingresa tu usuario' : null
@@ -39,50 +45,56 @@ const canSubmit = computed(() =>
 
 async function onSubmit(){
   if (!validate()) return
-  // Aquí llamarías a tu usecase registerUseCase(form)
+
   emit('submit', { ...form })
-  // Por ahora, navega a login tras "registrar"
+
   router.push('/login')
 }
 
 function onGoogleSignup() {
-  // TODO: Implementar signup con Google
+
   console.log('Google signup clicked')
 }
 </script>
 
 <template>
+  <div>
+    <div class="language-switcher">
+      <LanguageSwitcher />
+    </div>
+
   <form class="register-form" @submit.prevent="onSubmit" novalidate>
-    <h2 class="title">Crea tu cuenta</h2>
+    <h2 class="title">{{ t('auth.register.title') }}</h2>
 
     <!-- Botón de Google -->
     <button type="button" class="google-btn" @click="onGoogleSignup">
-      Continua con Google
+      {{ t('auth.register.continueWithGoogle') }}
     </button>
 
     <!-- Correo -->
     <label class="field">
-      <span class="label">Correo</span>
+      <span class="label">{{ t('auth.register.email') }}</span>
       <input
           class="input"
           type="email"
           v-model.trim="form.email"
-          placeholder="correo@ejemplo.com"
+          :placeholder="t('auth.register.emailPlaceholder')"
           autocomplete="email"
           :aria-invalid="!!errors.email"
+          :aria-label="t('auth.register.email')"
       />
       <small v-if="errors.email" class="error">{{ errors.email }}</small>
     </label>
 
     <!-- Usuario -->
     <label class="field">
-      <span class="label">Usuario</span>
+      <span class="label">{{ t('auth.register.username') }}</span>
       <input
           class="input"
           type="text"
           v-model.trim="form.username"
-          placeholder="Usuario"
-          autocomplete="username"
+          :placeholder="t('auth.register.usernamePlaceholder')"
+          :aria-label="t('auth.register.username')"
           :aria-invalid="!!errors.username"
       />
       <small v-if="errors.username" class="error">{{ errors.username }}</small>
@@ -90,44 +102,40 @@ function onGoogleSignup() {
 
     <!-- Contraseña -->
     <label class="field">
-      <span class="label">Contraseña</span>
+      <span class="label">{{ t('auth.register.password') }}</span>
       <input
           class="input"
           type="password"
           v-model="form.password"
-          placeholder="Mínimo 6 caracteres"
-          autocomplete="new-password"
+          :placeholder="t('auth.register.passwordPlaceholder')"
+          :aria-label="t('auth.register.password')"
           :aria-invalid="!!errors.password"
       />
       <small v-if="errors.password" class="error">{{ errors.password }}</small>
     </label>
 
-    <!-- Confirmar contraseña -->
-    <label class="field">
-      <span class="label">Confirmar contraseña</span>
-      <input
-          class="input"
-          type="password"
-          v-model="form.confirm"
-          placeholder="Repite la contraseña"
-          autocomplete="new-password"
-          :aria-invalid="!!errors.confirm"
-      />
-      <small v-if="errors.confirm" class="error">{{ errors.confirm }}</small>
-    </label>
+
 
     <button class="btn" type="submit" :disabled="!canSubmit">
-      Crear cuenta
+      {{ canSubmit ? t('auth.register.create') : t('auth.register.create') }}
     </button>
 
+
     <p class="hint">
-      ¿Ya tienes una cuenta?
-      <router-link to="/login" class="link">Inicia sesión</router-link>
+      {{ t('auth.register.haveAccount') }}
+      <router-link to="/login" class="link">{{ t('auth.register.signIn') }}</router-link>
     </p>
   </form>
+  </div>
 </template>
 
 <style scoped>
+.language-switcher {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 1000;
+}
 .register-form {
   display: flex;
   flex-direction: column;
