@@ -1,5 +1,5 @@
 <script setup lang="js">
-// Versión simple: sin props. Solo actúa como contenedor con sombra y padding.
+
 </script>
 
 <template>
