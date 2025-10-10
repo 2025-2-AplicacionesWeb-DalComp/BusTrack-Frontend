@@ -20,21 +20,21 @@ import RegisterForm from '@/app/presentation/components/RegisterForm.vue'
 
 <style scoped>
 
-/* --- Logo box (tamaño y forma) --- */
+/* --- Logo box --- */
 .icon{
-  /* mueve el logo hacia la izquierda (ajusta este valor a tu gusto) */
-  --nudge: 40px;             /* prueba con 10px, 20px, 40px… */
+  
+  --nudge: 40px;            
   transform: translateX(calc(-1 * var(--nudge)));
 }
 
 .screen {
-  width: 100vw;  /* TODO el ancho del viewport */
-  min-height: 100vh;  /* TODO el alto del viewport */
+  width: 100vw; 
+  min-height: 100vh;  
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 24px;
-  background: #d6ec9c;  /* Verde claro en TODA la pantalla */
+  background: #d6ec9c; 
   margin: 0;
   position: relative;
   left: 0;
