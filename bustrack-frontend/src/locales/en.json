@@ -64,8 +64,11 @@
       "title": "Create your account",
       "continueWithGoogle": "Continue with Google",
       "email": "Email",
+      "emailPlaceholder": "Email",
       "username": "Username",
+      "usernamePlaceholder": "Username",
       "password": "Password",
+      "passwordPlaceholder": "Password",
       "create": "Create Account",
       "haveAccount": "Already have an account?",
       "signIn": "Sign In"
@@ -79,5 +82,5 @@
   }
 
 
-  
+
 }
