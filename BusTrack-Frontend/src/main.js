@@ -2,6 +2,7 @@ import { createApp } from 'vue'
 //import style
 import App from './App.vue'
 import i18n from "./i18n";
+import router from "./router";
 import 'primeflex/primeflex.css';
 import 'primeicons/primeicons.css';
 import Material from '@primeuix/themes/material';
@@ -35,11 +36,10 @@ import {
     Toolbar,
     Tooltip
 } from "primevue";
-//import router y pinia
-
 
 createApp(App)
     .use(i18n)
+    .use(router)
     .use(PrimeVue, {theme: { preset: Material}, ripple: true})
     .use(ConfirmationService)
     .use(DialogService)
@@ -69,4 +69,3 @@ createApp(App)
     .component('pv-toast',          Toast)
     .directive('tooltip',           Tooltip)
     .mount('#app')
-//import router y pinia
