@@ -1,6 +1,9 @@
 import { createApp } from 'vue'
 //import style
 import App from './App.vue'
+import { createI18n } from 'vue-i18n'
+import en from '@/locales/en.json'
+import es from '@/locales/es.json'
 import i18n from "./i18n";
 import 'primeflex/primeflex.css';
 import 'primeicons/primeicons.css';
@@ -36,7 +39,13 @@ import {
     Tooltip
 } from "primevue";
 //import router y pinia
-
+const saved = localStorage.getItem('lang') || 'en'
+const i18n = createI18n({
+    legacy: false,
+    locale: saved,
+    fallbackLocale: 'en',
+    messages: { en, es }
+})
 
 createApp(App)
     .use(i18n)
