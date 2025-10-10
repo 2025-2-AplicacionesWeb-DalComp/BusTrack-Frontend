@@ -3,12 +3,14 @@ import { ref, onMounted, onUnmounted } from 'vue'
 import TopNav from '@/shared/presentation/components/TopNav.vue'
 import LocationBadge from '@/shared/presentation/components/LocationBadge.vue'
 import MapEmbed from '@/shared/presentation/components/MapEmbed.vue'
+import { useI18n } from 'vue-i18n'
+const { t } = useI18n()
 
 const address = ref('Obteniendo ubicación...')
 const isLoading = ref(true)
-let watchId = null // Para guardar el ID del watcher y poder limpiarlo después
+let watchId = null 
 
-// Función para obtener la dirección desde coordenadas usando Geocoding API
+
 const getAddressFromCoords = async (lat, lng) => {
   try {
     const response = await fetch(
@@ -34,7 +36,7 @@ const getAddressFromCoords = async (lat, lng) => {
 // Función para rastrear ubicación en tiempo real
 const trackLocation = () => {
   if ('geolocation' in navigator) {
-    // watchPosition se ejecuta cada vez que cambia la ubicación
+    
     watchId = navigator.geolocation.watchPosition(
         async (position) => {
           const { latitude, longitude } = position.coords
@@ -45,18 +47,18 @@ const trackLocation = () => {
         },
         (error) => {
           console.error('Error al obtener ubicación:', error)
-          // Si falla, usar ubicación por defecto
+          
           address.value = 'UPC - Campus San Miguel, Av. de la Marina 2810, San Miguel 15087'
           isLoading.value = false
         },
         {
-          enableHighAccuracy: true, // Usa GPS de alta precisión
-          maximumAge: 0, // No usar caché de ubicación
-          timeout: 5000 // Timeout de 5 segundos
+          enableHighAccuracy: true, 
+          maximumAge: 0, 
+          timeout: 5000 
         }
     )
   } else {
-    // Si el navegador no soporta geolocalización
+    
     address.value = 'UPC - Campus San Miguel, Av. de la Marina 2810, San Miguel 15087'
     isLoading.value = false
   }
@@ -66,7 +68,7 @@ onMounted(() => {
   trackLocation()
 })
 
-// Limpiar el watcher cuando se desmonte el componente
+
 onUnmounted(() => {
   if (watchId !== null) {
     navigator.geolocation.clearWatch(watchId)
