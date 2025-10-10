@@ -1,0 +1,49 @@
+{
+  "option": {
+    "home": "Home",
+    "about": "About",
+    "categories": "Search routes",
+    "notifications": "Notifications",
+    "busstops": "Bus Stops",
+    "profile": "Profile"
+  },
+
+  "authoring-phrase": {
+    "intro": "Made with",
+    "use": "using",
+    "author": "by {brand} Developer Team"
+  },
+
+  "about": {
+    "title": "About Us",
+    "content": "BusTrack is a mobilization Platform, part of DelComp Corporation."
+  },
+
+  "home": {
+    "title": "Welcome",
+    "content": "Welcome to BusTrack."
+  },
+
+  "page-not-found": {
+    "title": "Page Not Found",
+    "content": "The path {unavailable-route} is not available.",
+    "go-home": "Go Home"
+  },
+
+  "profile": {
+    "title": "Profile",
+    "name": "Name",
+    "email": "Gmail",
+    "password": "Password",
+    "favoriteRoutes": "Favorite Routes",
+    "travelHistory": "Travel History",
+    "notifications": "Notifications",
+    "accountSettings": "Account Settings",
+    "details": "Details",
+    "logout": "Logout"
+  },
+
+  "errors": {
+    "occurred": "Errors occurred"
+  }
+}
