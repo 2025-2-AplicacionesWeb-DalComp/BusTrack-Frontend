@@ -1,0 +1,225 @@
+{
+  "option": {
+    "home": "Inicio",
+    "about": "Acerca de",
+    "categories": "Buscar rutas",
+    "notifications": "Notificaciones",
+    "busstops": "Paradas de autobús",
+    "profile": "Perfil"
+  },
+  "notifications": {
+    "title": "Notificaciones",
+    "busArrival": "Tu bus OM22 llegará al Paradero Rafael Escardó en 3 minutos",
+    "busDelay": "El bus OM22 presenta un retraso de 5 minutos",
+    "routeSaved": "Guardaste la ruta \"Casa - UPC, Campus San Miguel\" como favorita",
+    "timeNow": "Ahora",
+    "time6Minutes": "Hace 6 minutos",
+    "time1Hour": "Hace 1 hora"
+  },
+  "profile-notifications": {
+    "back": "Volver",
+    "title": "Notificaciones",
+    "bus_arrival": "Llegada del bus",
+    "delays": "Retrasos",
+    "nearby_stops": "Paraderos cercanos",
+    "trip_start": "Inicio de viaje",
+    "on": "ON",
+    "off": "OFF",
+    "save": "Guardar Cambios",
+    "changes_saved": "Configuración guardada exitosamente"
+  },
+  "travel_history": {
+    "title": "Historial de Viajes",
+    "back": "Volver",
+    "on_foot": "A pie",
+    "campus_san_miguel": "UPC - Campus San Miguel",
+    "rafael_escardo_stop": "Paradero Rafael Escardó",
+    "santa_maria": "Santa María",
+    "cadiz": "Cádiz",
+    "campus_san_isidro": "UPC - Campus San Isidro",
+    "san_ignacio": "San Ignacio",
+    "la_encalada": "La Encalada",
+    "campus_monterrico": "UPC - Campus Monterrico"
+  },
+  "authoring-phrase": {
+    "intro": "Hecho con",
+    "use": "usando",
+    "author": "por el equipo de desarrollo de {brand}"
+  },
+  "about": {
+    "title": "Acerca de nosotros",
+    "content": "BusTrack es una plataforma de movilización, parte de DelComp Corporation."
+  },
+  "home": {
+    "searchTitle": "Buscar Ruta",
+    "gettingLocation": "Obteniendo ubicación...",
+    "locationUnavailable": "Ubicación no disponible",
+    "locationError": "Error al obtener ubicación",
+    "defaultLocation": "Lima, Perú",
+    "loadingMap": "Cargando mapa...",
+    "showingRoute": "Mostrando ruta",
+    "backToLocation": "Volver a ubicación actual",
+    "newSearch": "Nueva busqueda"
+  },
+  "searchRoute": {
+    "from": "Desde",
+    "to": "Destino",
+    "fromPlaceholder": "Escribe aquí",
+    "toPlaceholder": "Escribe aquí",
+    "search": "Buscar"
+  },
+  "page-not-found": {
+    "title": "Página no encontrada",
+    "content": "La ruta {unavailable-route} no está disponible.",
+    "go-home": "Volver al inicio"
+  },
+  "profile": {
+    "title": "Perfil",
+    "name": "Nombre",
+    "email": "Gmail",
+    "password": "Contraseña",
+    "favoriteRoutes": "Rutas favoritas",
+    "travelHistory": "Historial de viajes",
+    "notifications": "Notificaciones",
+    "accountSettings": "Configuración de cuenta",
+    "details": "Detalles",
+    "logout": "Cerrar Sesión"
+  },
+  "favoriteRoutes": {
+    "back": "Volver",
+    "title": "Rutas favoritas",
+    "viewDetails": "Ver Detalles",
+    "remove": "Eliminar",
+    "noRoutes": "No tienes rutas favoritas guardadas"
+  },
+  "accountSettings": {
+    "back": "Volver",
+    "title": "Configuración de cuenta",
+    "changePhoto": "Cambiar foto",
+    "name": "Nombre",
+    "email": "Gmail",
+    "password": "Contraseña",
+    "saveChanges": "Guardar Cambios",
+    "namePlaceholder": "Ingresa tu nombre",
+    "emailPlaceholder": "Ingresa tu email",
+    "passwordPlaceholder": "Ingresa tu nueva contraseña"
+  },
+  "errors": {
+    "occurred": "Ocurrieron errores"
+  },
+  "brand": {
+    "name": "BusTrack"
+  },
+  "nav": {
+    "searchRoute": "Buscar Ruta",
+    "notifications": "Notificaciones",
+    "busStops": "Paraderos Cercanos",
+    "profile": "Perfil"
+  },
+  "auth": {
+    "login": {
+      "title": "Iniciar Sesión",
+      "continueWithGoogle": "Continua con Google",
+      "emailOrUsername": "Gmail",
+      "emailOrUsernamePlaceholder": "Coloca tu gmail",
+      "username": "Gmail",
+      "password": "Contraseña",
+      "passwordPlaceholder": "Coloca tu contraseña",
+      "forgot": "¿Olvidaste tu contraseña?",
+      "continue": "Continuar",
+      "continuing": "Continuando...",
+      "submit": "Iniciar Sesión",
+      "noAccount": "¿No tienes cuenta?",
+      "register": "Iniciar Sesion",
+      "createAccount": "Crear cuenta",
+      "errors": {
+        "usernameRequired": "Ingresa tu usuario",
+        "passwordRequired": "Ingresa tu contraseña"
+      }
+    },
+    "register": {
+      "title": "Crea tu cuenta",
+      "continueWithGoogle": "Continúa con Google",
+      "email": "Correo",
+      "emailPlaceholder": "Ingresa tu correo",
+      "username": "Usuario",
+      "usernamePlaceholder": "Elige un nombre de usuario",
+      "password": "Contraseña",
+      "passwordPlaceholder": "Coloca mínimo 6 caracteres",
+      "create": "Crear Cuenta",
+      "haveAccount": "¿Ya tienes una cuenta?",
+      "signIn": "Inicia Sesión",
+      "errors": {
+        "emailRequired": "Ingresa tu correo",
+        "emailInvalid": "Correo inválido",
+        "usernameRequired": "Ingresa tu usuario",
+        "passwordMin": "Mínimo 6 caracteres",
+        "confirmRequired": "Confirma tu contraseña",
+        "confirmMismatch": "Las contraseñas no coinciden"
+      },
+      "confirmPassword": "Confirma tu contraseña",
+      "confirmPasswordPlaceholder": "Coloca tu contraseña"
+    }
+  },
+  "routeForm": {
+    "originLabel": "Dirección de origen",
+    "placeholder": "Coloca la dirección",
+    "search": "Buscar",
+    "searching": "Buscando...",
+    "success": "✅ Ruta encontrada satisfactoriamente",
+    "notFound": "No se encontraron rutas.",
+    "estimatedTime": "Tiempo estimado de ruta:",
+    "nextBus": "Próximo bus en:"
+  },
+  "busStops": {
+    "title": "Paraderos Cercanos",
+    "passingBuses": "Buses que pasan:",
+    "directions": "Cómo llegar",
+    "notifyArrival": "Notificar llegada"
+  },
+  "travelHistory": {
+    "title":"Historial de viaje"
+  },
+  "selectRole": {
+    "passenger": "Pasajero",
+    "company": "Empresa",
+    "title": "Elige tu tipo de usuario"
+  },
+  "passenger": {
+    "loginTitle": "PASAJEROS"
+  },
+  "company": {
+    "loginTitle": "EMPRESA"
+  },
+  "companyRegister": {
+    "register": {
+      "title": "Crea tu cuenta",
+      "companyName": "Nombre de la Empresa",
+      "companyNamePlaceholder": "Ingresa el nombre de la empresa",
+      "ruc": "RUC",
+      "rucPlaceholder": "Ingresa el RUC",
+      "corporateEmail": "Correo corporativo",
+      "corporateEmailPlaceholder": "Ingresa el correo corporativo",
+      "address": "Dirección",
+      "addressPlaceholder": "Ingresa la dirección",
+      "password": "Contraseña",
+      "passwordPlaceholder": "Ingresa tu contraseña",
+      "confirmPassword": "Confirmación de contraseña",
+      "confirmPasswordPlaceholder": "Confirma tu contraseña",
+      "passwordMismatch": "Las contraseñas no coinciden",
+      "fleetSize": "Tamaño de la flota",
+      "fleetSizePlaceholder": "Ingresa el número de buses",
+      "submit": "Crear Cuenta",
+      "alreadyHaveAccount": "¿Ya tienes una cuenta?",
+      "loginLink": "Inicia Sesión"
+    }
+  },
+  "companyNav": {
+    "dashboard": "Dashboard",
+    "monitoring": "Monitoreo",
+    "alerts": "Alertas",
+    "reports": "Reportes",
+    "fleet": "Flota",
+    "settings": "Configuración"
+  }
+}

@@ -1,0 +1,225 @@
+{
+  "option": {
+    "home": "Home",
+    "about": "About",
+    "categories": "Search routes",
+    "notifications": "Notifications",
+    "busstops": "Bus Stops",
+    "profile": "Profile"
+  },
+  "notifications": {
+    "title": "Notifications",
+    "busArrival": "Your bus OM22 will arrive at Rafael Escardó Stop in 3 minutes",
+    "busDelay": "Bus OM22 has a 5-minute delay",
+    "routeSaved": "You saved the route \"Home - UPC, Campus San Miguel\" as favorite",
+    "timeNow": "Now",
+    "time6Minutes": "6 minutes ago",
+    "time1Hour": "1 hour ago"
+  },
+  "profile-notifications": {
+    "back": "Back",
+    "title": "Notifications",
+    "bus_arrival": "Bus arrival",
+    "delays": "Delays",
+    "nearby_stops": "Nearby stops",
+    "trip_start": "Trip start",
+    "on": "ON",
+    "off": "OFF",
+    "save": "Save Changes",
+    "changes_saved": "Settings saved successfully"
+  },
+  "travel_history": {
+    "title": "Travel History",
+    "back": "Back",
+    "on_foot": "On foot",
+    "campus_san_miguel": "UPC - San Miguel Campus",
+    "rafael_escardo_stop": "Rafael Escardó Stop",
+    "santa_maria": "Santa María",
+    "cadiz": "Cádiz",
+    "campus_san_isidro": "UPC - San Isidro Campus",
+    "san_ignacio": "San Ignacio",
+    "la_encalada": "La Encalada",
+    "campus_monterrico": "UPC - Monterrico Campus"
+  },
+  "authoring-phrase": {
+    "intro": "Made with",
+    "use": "using",
+    "author": "by {brand} Developer Team"
+  },
+  "about": {
+    "title": "About Us",
+    "content": "BusTrack is a mobilization Platform, part of DelComp Corporation."
+  },
+  "home": {
+    "searchTitle": "Search route",
+    "gettingLocation": "Getting location...",
+    "locationUnavailable": "Location unavailable",
+    "locationError": "Error getting location",
+    "defaultLocation": "Lima, Peru",
+    "loadingMap": "Loading map...",
+    "showingRoute": "Showing route",
+    "backToLocation": "Back to current location",
+    "newSearch": "New search"
+  },
+  "searchRoute": {
+    "from": "From",
+    "to": "To",
+    "fromPlaceholder": "Enter origin",
+    "toPlaceholder": "Enter destination",
+    "search": "Search"
+  },
+  "page-not-found": {
+    "title": "Page Not Found",
+    "content": "The path {unavailable-route} is not available.",
+    "go-home": "Go Home"
+  },
+  "profile": {
+    "title": "Profile",
+    "name": "Name",
+    "email": "Gmail",
+    "password": "Password",
+    "favoriteRoutes": "Favorite Routes",
+    "travelHistory": "Travel History",
+    "notifications": "Notifications",
+    "accountSettings": "Account Settings",
+    "details": "Details",
+    "logout": "Logout"
+  },
+  "favoriteRoutes": {
+    "back": "Back",
+    "title": "Favorite Routes",
+    "viewDetails": "View Details",
+    "remove": "Remove",
+    "noRoutes": "You don't have any favorite routes saved"
+  },
+  "accountSettings": {
+    "back": "Back",
+    "title": "Account Settings",
+    "changePhoto": "Change Photo",
+    "name": "Name",
+    "email": "Gmail",
+    "password": "Password",
+    "saveChanges": "Save Changes",
+    "namePlaceholder": "Enter your name",
+    "emailPlaceholder": "Enter your email",
+    "passwordPlaceholder": "Enter your new password"
+  },
+  "errors": {
+    "occurred": "Errors occurred"
+  },
+  "brand": {
+    "name": "BusTrack"
+  },
+  "nav": {
+    "searchRoute": "Search route",
+    "notifications": "Notifications",
+    "busStops": "Nearby stops",
+    "profile": "Profile"
+  },
+  "auth": {
+    "login": {
+      "title": "Log In",
+      "continueWithGoogle": "Continue with Google",
+      "username": "Gmail",
+      "emailOrUsername": "Email or username",
+      "emailOrUsernamePlaceholder": "Enter your gmail",
+      "password": "Password",
+      "passwordPlaceholder": "Enter your password",
+      "forgot": "Forgot your password?",
+      "continue": "Continue",
+      "continuing": "Continuing...",
+      "submit": "Log In",
+      "noAccount": "Don't have an account?",
+      "register": "Log In",
+      "createAccount": "Create one",
+      "errors": {
+        "usernameRequired": "Enter your username",
+        "passwordRequired": "Enter your password"
+      }
+    },
+    "register": {
+      "title": "Create your account",
+      "continueWithGoogle": "Continue with Google",
+      "email": "Email",
+      "emailPlaceholder": "Enter your email",
+      "username": "Username",
+      "usernamePlaceholder": "Choose a username",
+      "password": "Password",
+      "passwordPlaceholder": "Enter at least 6 characters",
+      "create": "Create Account",
+      "haveAccount": "Already have an account?",
+      "signIn": "Sign In",
+      "errors": {
+        "emailRequired": "Enter your email",
+        "emailInvalid": "Invalid email",
+        "usernameRequired": "Enter your username",
+        "passwordMin": "At least 6 characters",
+        "confirmRequired": "Confirm your password",
+        "confirmMismatch": "Passwords do not match"
+      },
+      "confirmPassword": "Confirm your password",
+      "confirmPasswordPlaceholder": "Enter your password"
+    }
+  },
+  "routeForm": {
+    "originLabel": "Origin address",
+    "placeholder": "Enter the address",
+    "search": "Search",
+    "searching": "Searching...",
+    "success": "✅ Route found successfully",
+    "notFound": "No routes found.",
+    "estimatedTime": "Estimated route time:",
+    "nextBus": "Next bus in:"
+  },
+  "busStops": {
+    "title": "Nearby Stops",
+    "passingBuses": "Buses passing:",
+    "directions": "Directions",
+    "notifyArrival": "Notify arrival"
+  },
+  "travelHistory": {
+    "title":"Travel History"
+  },
+  "selectRole": {
+    "passenger": "Passenger",
+    "company": "Company",
+    "title": "Choose your role"
+  },
+  "passenger": {
+    "loginTitle": "PASSENGERS"
+  },
+  "company": {
+    "loginTitle": "COMPANY"
+  },
+  "companyRegister": {
+    "register": {
+      "title": "Create your account",
+      "companyName": "Company name",
+      "companyNamePlaceholder": "Enter the company name",
+      "ruc": "Tax ID",
+      "rucPlaceholder": "Enter the tax ID",
+      "corporateEmail": "Corporate email",
+      "corporateEmailPlaceholder": "Enter corporate email",
+      "address": "Address",
+      "addressPlaceholder": "Enter the address",
+      "password": "Password",
+      "passwordPlaceholder": "Enter your password",
+      "confirmPassword": "Confirm password",
+      "confirmPasswordPlaceholder": "Confirm your password",
+      "passwordMismatch": "Passwords do not match",
+      "fleetSize": "Fleet size",
+      "fleetSizePlaceholder": "Enter number of buses",
+      "submit": "Create Account",
+      "alreadyHaveAccount": "Already have an account?",
+      "loginLink": "Sign In"
+    }
+  },
+  "companyNav": {
+    "dashboard": "Dashboard",
+    "monitoring": "Monitoring",
+    "alerts": "Alerts",
+    "reports": "Reports",
+    "fleet": "Fleet",
+    "settings": "Settings"
+  }
+}
