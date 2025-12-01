@@ -1,4 +1,4 @@
-<script setup>
+1<script setup>
 import { ref, onMounted } from 'vue'
 import { useRouter } from 'vue-router'
 import { useI18n } from 'vue-i18n'
@@ -26,7 +26,7 @@ const goBack = () => {
 }
 
 const saveChanges = () => {
-  // Save to localStorage
+
   localStorage.setItem('notificationSettings', JSON.stringify(notificationSettings.value))
 
 

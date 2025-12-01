@@ -49,7 +49,7 @@ const canSubmit = computed(() => form.emailOrUsername && form.password)
 async function onSubmit () {
   if (!validate()) return
 
-  // CASO EMPRESA: no usamos useUserStore
+  // CASO EMPRESA
   if (props.variant === 'company') {
     emit('submit', {
       emailOrUsername: form.emailOrUsername,
@@ -133,7 +133,7 @@ function onGoogleLogin () {
 
 
     <button class="btn" type="submit" :disabled="!canSubmit">
-      {{ t('auth.login.register') /* aquí tu key actual para "Log In" */ }}
+      {{ t('auth.login.register')  }}
     </button>
 
 

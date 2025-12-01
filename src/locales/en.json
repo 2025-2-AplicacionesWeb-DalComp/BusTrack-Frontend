@@ -9,12 +9,32 @@
   },
   "notifications": {
     "title": "Notifications",
-    "busArrival": "Your bus OM22 will arrive at Rafael Escardó Stop in 3 minutes",
-    "busDelay": "Bus OM22 has a 5-minute delay",
-    "routeSaved": "You saved the route \"Home - UPC, Campus San Miguel\" as favorite",
-    "timeNow": "Now",
-    "time6Minutes": "6 minutes ago",
-    "time1Hour": "1 hour ago"
+    "clearAll": "Clear all",
+    "confirmClearAll": "Do you want to delete all notifications?",
+    "empty": {
+      "title": "You have no notifications",
+      "subtitle": "When you save routes or there are updates, they will appear here"
+    },
+    "remove": "Remove notification",
+    "timeAgo": {
+      "now": "Now",
+      "minutesAgo": "{minutes} min ago",
+      "hoursAgo": "{hours} h ago",
+      "daysAgo": "{days} days ago"
+    },
+    "messages": {
+      "default": "New notification",
+      "routeSaved": "Route \"{routeName}\" saved to favorites",
+      "routeRemoved": "Route \"{routeName}\" removed from favorites",
+      "busArriving": "Bus {busNumber} will arrive in {minutes} minutes",
+      "routeDelayed": "Route {routeName} delayed {delay} minutes",
+      "locationEnabled": "Location enabled successfully",
+      "locationError": "Error getting your location",
+      "noRoutesFound": "No routes found",
+      "routeUpdated": "Route information updated",
+      "favoriteAdded": "Added to favorites",
+      "favoriteRemoved": "Removed from favorites"
+    }
   },
   "profile-notifications": {
     "back": "Back",
@@ -87,22 +107,35 @@
   },
   "favoriteRoutes": {
     "back": "Back",
-    "title": "Favorite Routes",
-    "viewDetails": "View Details",
-    "remove": "Remove",
-    "noRoutes": "You don't have any favorite routes saved"
+    "title": "Favorite routes",
+    "emptyTitle": "You don't have any saved routes",
+    "emptySubtitle": "Save your frequent routes to access them quickly",
+    "searchButton": "Search routes",
+    "origin": "Origin",
+    "destination": "Destination",
+    "viewRoute": "View route",
+    "googleMaps": "Google Maps",
+    "deleteTooltip": "Remove route from favorites"
   },
   "accountSettings": {
     "back": "Back",
     "title": "Account Settings",
     "changePhoto": "Change Photo",
     "name": "Name",
-    "email": "Gmail",
-    "password": "Password",
-    "saveChanges": "Save Changes",
     "namePlaceholder": "Enter your name",
+    "email": "Email",
     "emailPlaceholder": "Enter your email",
-    "passwordPlaceholder": "Enter your new password"
+    "password": "Password",
+    "passwordPlaceholder": "Enter your password",
+    "saveChanges": "Save Changes",
+
+    "photoSoon": "This feature will be available soon",
+    "errorAllFields": "Please fill in all fields",
+    "errorInvalidEmail": "Please enter a valid email",
+    "errorShortPassword": "The password must be at least 6 characters",
+    "saveSuccess": "Changes saved successfully",
+    "showPassword": "Show password",
+    "hidePassword": "Hide password"
   },
   "errors": {
     "occurred": "Errors occurred"
@@ -171,6 +204,16 @@
     "estimatedTime": "Estimated route time:",
     "nextBus": "Next bus in:"
   },
+  "routeResults": {
+    "title": "Your trip information",
+    "origin": "Origin",
+    "destination": "Destination",
+    "saveRoute": "Save route",
+    "saving": "Saving...",
+    "openInGoogleMaps": "View routes on Google Maps",
+    "saveSuccess": "✓ Route saved successfully",
+    "saveError": "An error occurred while saving the route"
+  },
   "busStops": {
     "title": "Nearby Stops",
     "passingBuses": "Buses passing:",
@@ -178,7 +221,13 @@
     "notifyArrival": "Notify arrival"
   },
   "travelHistory": {
-    "title":"Travel History"
+    "back": "Back",
+    "title": "Travel history",
+    "clearHistory": "Clear user history",
+    "emptyTitle": "No travel history yet",
+    "emptySubtitle": "Your searched routes will appear here",
+    "searchRoute": "Search a route",
+    "repeatTooltip": "Search this route again"
   },
   "selectRole": {
     "passenger": "Passenger",
@@ -221,5 +270,37 @@
     "reports": "Reports",
     "fleet": "Fleet",
     "settings": "Settings"
+  },
+
+  "alerts": {
+    "title": "Internal Alerts",
+    "empty": "No pending alerts found",
+    "confirmResolve": "Are you sure you want to mark this alert as resolved?",
+    "filters": {
+      "type": "Filter by Type",
+      "severity": "Filter by Severity",
+      "status": "Filter by Status",
+      "allTypes": "All Types",
+      "allSeverities": "All Severities",
+      "allStatus": "All Statuses"
+    },
+    "types": {
+      "detour": "Route Detour Detected",
+      "traffic": "Heavy Traffic",
+      "incident": "Incident Reported",
+      "delay": "Minor Delay"
+    },
+    "severity": {
+      "high": "High",
+      "medium": "Medium",
+      "low": "Low"
+    },
+    "status": {
+      "pending": "Pending",
+      "resolved": "Resolved"
+    },
+    "actions": {
+      "resolve": "Mark as Resolved"
+    }
   }
 }

@@ -2,10 +2,11 @@
 import { ref, onMounted } from 'vue'
 import { useRouter } from 'vue-router'
 import { useUserStore } from '@/stores/useUserStore'
+import { useI18n } from 'vue-i18n'
 
 const router = useRouter()
 const userStore = useUserStore()
-
+const { t } = useI18n()
 
 const userData = ref({
   name: '',
@@ -13,10 +14,18 @@ const userData = ref({
   password: ''
 })
 
-// Estado para mostrar/ocultar contraseña
+
 const showPassword = ref(false)
 
-// Cargar datos del usuario al montar
+
+const showSuccessMessage = ref(false)
+const successMessage = ref('')
+
+
+const showErrorMessage = ref(false)
+const errorMessage = ref('')
+
+
 onMounted(() => {
   userStore.loadUserFromStorage()
 
@@ -25,7 +34,7 @@ onMounted(() => {
     return
   }
 
-  // Cargar los datos actuales del usuario
+
   userData.value = {
     name: userStore.user.username || '',
     email: userStore.user.email || '',
@@ -37,51 +46,89 @@ const goBack = () => {
   router.back()
 }
 
-const changePhoto = () => {
-  console.log('Cambiar foto de perfil')
-}
-
 const togglePassword = () => {
   showPassword.value = !showPassword.value
 }
 
-const saveChanges = () => {
-  console.log('Guardando cambios:', userData.value)
+const changePhoto = () => {
 
-  // Validar que los campos no estén vacíos
+  showInfoMessage(t('accountSettings.photoSoon'))
+}
+
+const showInfoMessage = (message) => {
+  errorMessage.value = message
+  showErrorMessage.value = true
+
+  setTimeout(() => {
+    showErrorMessage.value = false
+  }, 3000)
+}
+
+const showError = (message) => {
+  errorMessage.value = message
+  showErrorMessage.value = true
+
+  setTimeout(() => {
+    showErrorMessage.value = false
+  }, 4000)
+}
+
+const showSuccess = (message) => {
+  successMessage.value = message
+  showSuccessMessage.value = true
+
+  setTimeout(() => {
+    showSuccessMessage.value = false
+  }, 3000)
+}
+
+const saveChanges = () => {
+
   if (!userData.value.name || !userData.value.email || !userData.value.password) {
-    alert('⚠️ Por favor, completa todos los campos')
+    showError(t('accountSettings.errorAllFields'))
     return
   }
 
-  // Validar formato de email
+
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
   if (!emailRegex.test(userData.value.email)) {
-    alert('⚠️ Por favor, ingresa un email válido')
+    showError(t('accountSettings.errorInvalidEmail'))
     return
   }
 
-  // Validar longitud de contraseña
+
   if (userData.value.password.length < 6) {
-    alert('⚠️ La contraseña debe tener al menos 6 caracteres')
+    showError(t('accountSettings.errorShortPassword'))
     return
   }
 
-  // Actualizar el usuario en el store
+
   userStore.updateUser({
     username: userData.value.name,
     email: userData.value.email,
     password: userData.value.password
   })
 
-  alert('Cambios guardados exitosamente')
-
+  showSuccess(t('accountSettings.saveSuccess'))
 }
 </script>
 
-
 <template>
   <div class="account-settings-container">
+    <!-- Mensajes de notificación -->
+    <transition name="slide-down">
+      <div v-if="showSuccessMessage" class="notification success-notification">
+        <span class="notification-icon">✓</span>
+        <span class="notification-text">{{ successMessage }}</span>
+      </div>
+    </transition>
+
+    <transition name="slide-down">
+      <div v-if="showErrorMessage" class="notification error-notification">
+        <span class="notification-text">{{ errorMessage }}</span>
+      </div>
+    </transition>
+
     <!-- Botón Volver -->
     <div class="navigation-section">
       <button class="back-btn" @click="goBack">
@@ -144,12 +191,12 @@ const saveChanges = () => {
                   type="button"
                   class="toggle-password-btn"
                   @click="togglePassword"
-                  :title="showPassword ? 'Ocultar contraseña' : 'Mostrar contraseña'"
+                  :title="showPassword ? $t('accountSettings.hidePassword') : $t('accountSettings.showPassword')"
               >
                 {{ showPassword ? '🫣' : '👁️' }}
               </button>
-            </div>
 
+            </div>
           </div>
         </div>
 
@@ -169,6 +216,75 @@ const saveChanges = () => {
   padding: 20px;
   min-height: 100vh;
   background-color: white;
+  position: relative;
+}
+
+/* Notificaciones */
+.notification {
+  position: fixed;
+  top: 80px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 9999;
+  padding: 16px 24px;
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-weight: 600;
+  font-size: 1rem;
+  min-width: 300px;
+  max-width: 500px;
+  animation: slideDown 0.3s ease;
+}
+
+.success-notification {
+  background: linear-gradient(135deg, #4caf50 0%, #45a049 100%);
+  color: white;
+  border: 2px solid #43a047;
+}
+
+.error-notification {
+  background: linear-gradient(135deg, #ff9800 0%, #f57c00 100%);
+  color: white;
+  border: 2px solid #f57c00;
+}
+
+.notification-icon {
+  font-size: 1.5rem;
+  flex-shrink: 0;
+}
+
+.notification-text {
+  flex: 1;
+}
+
+/* Animaciones */
+.slide-down-enter-active,
+.slide-down-leave-active {
+  transition: all 0.3s ease;
+}
+
+.slide-down-enter-from {
+  opacity: 0;
+  transform: translateX(-50%) translateY(-20px);
+}
+
+.slide-down-leave-to {
+  opacity: 0;
+  transform: translateX(-50%) translateY(-20px);
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateX(-50%) translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
 }
 
 .navigation-section {
@@ -184,11 +300,13 @@ const saveChanges = () => {
   font-weight: bold;
   cursor: pointer;
   font-size: 1em;
-  transition: background-color 0.3s ease;
+  transition: all 0.3s ease;
 }
 
 .back-btn:hover {
   background-color: #333;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }
 
 .content-section {
@@ -230,6 +348,12 @@ const saveChanges = () => {
   align-items: center;
   justify-content: center;
   border: 3px solid #789c0a;
+  transition: all 0.3s ease;
+}
+
+.avatar-icon:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 12px rgba(120, 156, 10, 0.3);
 }
 
 .avatar-symbol {
@@ -245,11 +369,13 @@ const saveChanges = () => {
   border-radius: 6px;
   font-weight: bold;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  transition: all 0.3s ease;
 }
 
 .change-photo-btn:hover {
   background-color: #333;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }
 
 .form-section {
@@ -274,15 +400,15 @@ const saveChanges = () => {
   border: 2px solid #e0e0e0;
   border-radius: 8px;
   font-size: 1em;
-  transition: border-color 0.3s ease;
+  transition: all 0.3s ease;
   box-sizing: border-box;
 }
 
 .form-input:focus {
   outline: none;
   border-color: #789c0a;
+  box-shadow: 0 0 0 3px rgba(120, 156, 10, 0.1);
 }
-
 
 .password-field {
   position: relative;
@@ -316,14 +442,6 @@ const saveChanges = () => {
   transform: scale(0.95);
 }
 
-.password-hint {
-  display: block;
-  color: #666;
-  font-size: 0.85em;
-  margin-top: 6px;
-  font-style: italic;
-}
-
 .actions-section {
   display: flex;
   justify-content: center;
@@ -338,21 +456,36 @@ const saveChanges = () => {
   font-weight: bold;
   cursor: pointer;
   font-size: 1.1em;
-  transition: background-color 0.3s ease;
+  transition: all 0.3s ease;
 }
 
 .save-btn:hover {
   background-color: #333;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
 }
 
+.save-btn:active {
+  transform: translateY(0);
+}
 
 @media (max-width: 768px) {
+  .account-settings-container {
+    padding: 15px;
+  }
+
   .settings-card {
     padding: 20px;
   }
 
   .page-title {
     font-size: 1.5em;
+  }
+
+  .notification {
+    min-width: 250px;
+    padding: 12px 20px;
+    font-size: 0.9rem;
   }
 }
 </style>

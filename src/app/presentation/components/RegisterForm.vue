@@ -1,4 +1,4 @@
-<script setup lang="js">
+  <script setup lang="js">
 import { reactive, computed } from 'vue'
 import { useRouter } from 'vue-router'
 import { useUserStore } from '@/stores/useUserStore'

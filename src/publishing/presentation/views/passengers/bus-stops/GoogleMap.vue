@@ -82,7 +82,7 @@ const updateMarkers = () => {
       animation: google.maps.Animation.DROP
     })
 
-    // Crear InfoWindow para mostrar información al hacer clic
+    // Crear InfoWindow para mostrar información al hacer click
     const infoWindow = new google.maps.InfoWindow({
       content: createInfoWindowContent(markerData)
     })

@@ -8,6 +8,7 @@ const emit = defineEmits(['search'])
 const origin = ref('')
 const destination = ref('')
 
+
 const handleSearch = () => {
   if (origin.value.trim() && destination.value.trim()) {
     emit('search', { origin: origin.value, destination: destination.value })
