@@ -26,7 +26,7 @@ const goBack = () => {
 }
 
 const saveChanges = () => {
-  // Save to localStorage
+
   localStorage.setItem('notificationSettings', JSON.stringify(notificationSettings.value))
 
 

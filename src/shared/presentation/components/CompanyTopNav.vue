@@ -7,10 +7,8 @@ const route = useRoute()
 const { t } = useI18n()
 
 const tabs = [
-  { to: { name: 'company-dashboard' }, labelKey: 'companyNav.dashboard' },
   { to: { name: 'company-monitoring' }, labelKey: 'companyNav.monitoring' },
   { to: { name: 'company-alerts' }, labelKey: 'companyNav.alerts' },
-  { to: { name: 'company-reports' }, labelKey: 'companyNav.reports' },
   { to: { name: 'company-fleet' }, labelKey: 'companyNav.fleet' },
   { to: { name: 'company-settings' }, labelKey: 'companyNav.settings' }
 ]

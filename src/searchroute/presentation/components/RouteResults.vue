@@ -1,37 +1,96 @@
 <script setup>
+import { useSavedRoutesStore } from '@/stores/useSavedRoutesStore'
+import { useNotificationsStore } from '@/stores/useNotificationsStore'
+import { useTravelHistoryStore } from '@/stores/useTravelHistoryStore'
+import { useI18n } from 'vue-i18n'
+import { ref, onMounted } from 'vue'
+
+const { t } = useI18n()
+const savedRoutesStore = useSavedRoutesStore()
+const notificationsStore = useNotificationsStore()
+const travelHistoryStore = useTravelHistoryStore()
+
 const props = defineProps({
   origin: String,
   destination: String,
   routeData: Object
 })
 
+const emit = defineEmits(['save-route'])
+
+const isSaving = ref(false)
+const saveMessage = ref('')
+
+const saveRoute = () => {
+  isSaving.value = true
+  saveMessage.value = ''
+
+  const routeToSave = {
+    origin: props.origin,
+    destination: props.destination,
+  }
+
+  const success = savedRoutesStore.addRoute(routeToSave)
+
+  if (success) {
+    notificationsStore.addNotification({
+      type: 'success',
+      message: `Ruta guardada: ${props.origin} → ${props.destination}`,
+      priority: 'low',
+      icon: '⭐'
+    })
+
+    saveMessage.value = '✓ Ruta guardada en favoritos'
+    emit('save-route', routeToSave)
+  } else {
+    saveMessage.value = 'Esta ruta ya está en favoritos'
+    notificationsStore.addNotification({
+      type: 'info',
+      message: `La ruta ${props.origin} → ${props.destination} ya está guardada`,
+      priority: 'low',
+      icon: 'ℹ️'
+    })
+  }
+
+  setTimeout(() => {
+    isSaving.value = false
+    saveMessage.value = ''
+  }, 3000)
+}
+
+
 const openInGoogleMaps = () => {
-  // Crear URL para Google Maps con origen y destino
   const origin = encodeURIComponent(props.origin)
   const destination = encodeURIComponent(props.destination)
   const url = `https://www.google.com/maps/dir/?api=1&origin=${origin}&destination=${destination}&travelmode=transit`
-
-
   window.open(url, '_blank')
 }
 
-const copyAddress = (address) => {
-  navigator.clipboard.writeText(address)
-  alert('Dirección copiada al portapapeles')
+onMounted(() => {
+  // Agregar al historial de viajes automáticamente
+  travelHistoryStore.addTrip({
+    origin: props.origin,
+    destination: props.destination,
+    steps: [], // Puedes agregar pasos si tienes esa info
+  })
+})
+
+const extractStepsFromRouteData = (routeData) => {
+  return []
 }
 </script>
 
 <template>
   <div class="route-results">
     <div class="results-header">
-      <h2>Información de tu viaje</h2>
+      <h2>{{ $t('routeResults.title') }}</h2>
     </div>
 
     <div class="address-card">
       <div class="address-item origin">
         <div class="label">
           <span class="marker">A</span>
-          <span class="text">Origen</span>
+          <span class="text">{{ $t('routeResults.origin') }}</span>
         </div>
         <div class="address-content">
           <p>{{ origin }}</p>
@@ -45,7 +104,7 @@ const copyAddress = (address) => {
       <div class="address-item destination">
         <div class="label">
           <span class="marker">B</span>
-          <span class="text">Destino</span>
+          <span class="text">{{ $t('routeResults.destination') }}</span>
         </div>
         <div class="address-content">
           <p>{{ destination }}</p>
@@ -53,35 +112,32 @@ const copyAddress = (address) => {
       </div>
     </div>
 
-    <div class="info-box">
-      <div class="info-icon">ℹ️</div>
-      <div class="info-content">
-        <p><strong>Para ver las rutas de buses disponibles:</strong></p>
-        <p>Haz clic en el botón de abajo para abrir Google Maps y ver todas las opciones de transporte público, incluyendo líneas de buses, tiempos y paraderos.</p>
-      </div>
+    <div
+        v-if="saveMessage"
+        class="save-message"
+        :class="{ success: isSaveSuccess }"
+    >
+      {{ saveMessage }}
     </div>
 
-    <button @click="openInGoogleMaps" class="google-maps-btn">
-      <span class="google-icon">🗺️</span>
-      Ver rutas en Google Maps
-    </button>
+    <div class="buttons-row">
+      <button
+          class="save-route-btn"
+          type="button"
+          @click="saveRoute"
+          :disabled="isSaving"
+      >
+        <span v-if="!isSaving">{{ $t('routeResults.saveRoute') }}</span>
+        <span v-else>{{ $t('routeResults.saving') }}</span>
+      </button>
 
-    <div class="features-list">
-      <div class="feature">
-        ✓ Rutas de buses y combis
-      </div>
-      <div class="feature">
-        ✓ Tiempos estimados
-      </div>
-      <div class="feature">
-        ✓ Paraderos y estaciones
-      </div>
-      <div class="feature">
-        ✓ Múltiples opciones de ruta
-      </div>
+      <button @click="openInGoogleMaps" class="google-maps-btn">
+        {{ $t('routeResults.openInGoogleMaps') }}
+      </button>
     </div>
   </div>
 </template>
+
 
 <style scoped>
 .route-results {
@@ -170,21 +226,6 @@ const copyAddress = (address) => {
   line-height: 1.4;
 }
 
-.copy-btn {
-  padding: 6px 12px;
-  background: #f0f0f0;
-  border: none;
-  border-radius: 6px;
-  font-size: 12px;
-  cursor: pointer;
-  transition: all 0.2s ease;
-  white-space: nowrap;
-}
-
-.copy-btn:hover {
-  background: #e0e0e0;
-}
-
 .arrow-separator {
   text-align: center;
   font-size: 24px;
@@ -200,11 +241,6 @@ const copyAddress = (address) => {
   border-radius: 12px;
   margin-bottom: 16px;
   border-left: 4px solid #8bc34a;
-}
-
-.info-icon {
-  font-size: 24px;
-  flex-shrink: 0;
 }
 
 .info-content {
@@ -226,49 +262,88 @@ const copyAddress = (address) => {
   font-weight: 700;
 }
 
+.save-message {
+  padding: 12px 16px;
+  border-radius: 10px;
+  margin-bottom: 16px;
+  text-align: center;
+  font-weight: 600;
+  background: #fff3cd;
+  color: #856404;
+  border: 1px solid #ffeaa7;
+  animation: slideIn 0.3s ease;
+}
+
+.save-message.success {
+  background: #d4edda;
+  color: #155724;
+  border: 1px solid #c3e6cb;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.buttons-row {
+  display: flex;
+  gap: 12px;
+  margin-top: 16px;
+  flex-wrap: wrap;
+}
+
+.save-route-btn {
+  flex: 1;
+  min-width: 160px;
+  padding: 12px 16px;
+  border-radius: 10px;
+  border: none;
+  background: #000;
+  color: #fff;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, .2);
+  transition: all 0.3s ease;
+}
+
+.save-route-btn:hover:not(:disabled) {
+  background: #333;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, .3);
+}
+
+.save-route-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
 .google-maps-btn {
-  width: 100%;
-  padding: 16px;
+  flex: 1;
+  min-width: 160px;
+  padding: 12px 16px;
   background: #4285F4;
   color: white;
   border: none;
-  border-radius: 12px;
-  font-size: 16px;
-  font-weight: 700;
+  border-radius: 10px;
+  font-size: 15px;
+  font-weight: 600;
   cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  transition: all 0.2s ease;
-  margin-bottom: 16px;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 10px rgba(66, 133, 244, 0.3);
 }
 
 .google-maps-btn:hover {
   background: #3367D6;
   transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(66, 133, 244, 0.3);
+  box-shadow: 0 6px 15px rgba(66, 133, 244, 0.4);
 }
 
-.google-icon {
-  font-size: 20px;
-}
-
-.features-list {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 8px;
-}
-
-.feature {
-  font-size: 13px;
-  color: #666;
-  padding: 8px;
-  background: #f8f8f8;
-  border-radius: 6px;
-}
-
-/* Scrollbar personalizado */
 .route-results::-webkit-scrollbar {
   width: 8px;
 }
@@ -285,5 +360,17 @@ const copyAddress = (address) => {
 
 .route-results::-webkit-scrollbar-thumb:hover {
   background: #7cb342;
+}
+
+@media (max-width: 600px) {
+  .buttons-row {
+    flex-direction: column;
+  }
+
+  .save-route-btn,
+  .google-maps-btn {
+    width: 100%;
+    min-width: unset;
+  }
 }
 </style>

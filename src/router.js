@@ -24,10 +24,8 @@ import Profile from "./publishing/presentation/views/passengers/profile/profile.
 
 
 // App EMPRESA
-import CompanyDashboard from '@/publishing/presentation/views/companies/dashboard-company.vue'
 import CompanyMonitoring from '@/publishing/presentation/views/companies/monitoring-company.vue'
 import CompanyAlerts from '@/publishing/presentation/views/companies/alerts-company.vue'
-import CompanyReports from '@/publishing/presentation/views/companies/reports-company.vue'
 import CompanyFleet from '@/publishing/presentation/views/companies/fleet-company.vue'
 import CompanySettings from '@/publishing/presentation/views/companies/settings-company.vue'
 
@@ -43,8 +41,8 @@ const routes = [
   { path: '/register', name: 'register', component: RegisterPage, meta: { public: true }},
 
   // Auth EMPRESA
-  {path: "/company/login", name: "company-login", component: CompanyLoginPage, meta: { public: true, role: "company" },},
-  {path: "/company/register", name: "company-register", component: CompanyRegisterPage, meta: { public: true, role: "company" },},
+  { path: '/company/login', name: 'company-login', component: CompanyLoginPage, meta: { public: true } },
+  { path: '/company/register', name: 'company-register', component: CompanyRegisterPage, meta: { public: true } },
 
   // APP PASAJERO
   { path: '/home', name: 'home', component: HomePage, meta: { requiresAuth: true } },
@@ -58,11 +56,9 @@ const routes = [
   { path: '/profile/notifications', name: 'profile-notifications', component: NotificationsSettings, meta: { requiresAuth: true } },
 
 
-  // APP PASAJERO
-  {path: '/company/dashboard', name: 'company-dashboard', component: CompanyDashboard, meta: { requiresAuth: true, section: 'company' }},
+  // APP EMPRESA
   {path: '/company/monitoring', name: 'company-monitoring', component: CompanyMonitoring, meta: { requiresAuth: true, section: 'company' }},
   {path: '/company/alerts', name: 'company-alerts', component: CompanyAlerts, meta: { requiresAuth: true, section: 'company' }},
-  {path: '/company/reports', name: 'company-reports', component: CompanyReports, meta: { requiresAuth: true, section: 'company' }},
   {path: '/company/fleet', name: 'company-fleet', component: CompanyFleet, meta: { requiresAuth: true, section: 'company' }},
   {path: '/company/settings', name: 'company-settings', component: CompanySettings, meta: { requiresAuth: true, section: 'company' }},
 
@@ -75,5 +71,7 @@ const router = createRouter({
   history: createWebHistory(),
   routes,
 })
+
+
 
 export default router

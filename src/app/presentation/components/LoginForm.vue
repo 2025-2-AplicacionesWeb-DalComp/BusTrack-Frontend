@@ -13,7 +13,6 @@ const props = defineProps({
     type: String,
     default: '/register'
   },
-
   variant: {
     type: String,
     default: 'passenger'
@@ -49,32 +48,39 @@ const canSubmit = computed(() => form.emailOrUsername && form.password)
 async function onSubmit () {
   if (!validate()) return
 
-  // CASO EMPRESA: no usamos useUserStore
-  if (props.variant === 'company') {
-    emit('submit', {
-      emailOrUsername: form.emailOrUsername,
-      password: form.password
-    })
-    return
-  }
+  errors.general = null
 
-  // CASO PASAJERO
-  const success = userStore.login({
-    email: form.emailOrUsername,
-    username: form.emailOrUsername,
-    password: form.password
-  })
+  try {
+    // CASO EMPRESA
+    if (props.variant === 'company') {
+      const company = await userStore.loginCompany(form.emailOrUsername, form.password)
+      console.log('✅ Login empresa exitoso, redirigiendo...')
+      emit('submit', company)
+      router.push('/company/monitoring')
+    }
+    // CASO PASAJERO
+    else {
+      const success = userStore.login({
+        email: form.emailOrUsername,
+        username: form.emailOrUsername,
+        password: form.password
+      })
 
-  if (success) {
-    console.log('✅ Login exitoso, redirigiendo...')
-    emit('submit', {
-      username: userStore.user.username,
-      email: userStore.user.email
-    })
-    router.push('/home')
-  } else {
-    console.log('❌ Login fallido: credenciales incorrectas')
-    errors.general = 'Usuario o contraseña incorrectos. Por favor, intenta de nuevo.'
+      if (success) {
+        console.log('✅ Login pasajero exitoso, redirigiendo...')
+        emit('submit', {
+          username: userStore.user.username,
+          email: userStore.user.email
+        })
+        router.push('/home')
+      } else {
+        console.log('❌ Login fallido: credenciales incorrectas')
+        errors.general = 'Usuario o contraseña incorrectos. Por favor, intenta de nuevo.'
+      }
+    }
+  } catch (error) {
+    console.log('❌ Error en login:', error.message)
+    errors.general = error.message || 'Error al iniciar sesión'
   }
 }
 
@@ -83,22 +89,21 @@ function onGoogleLogin () {
 }
 </script>
 
-
 <template>
   <form class="login-form" @submit.prevent="onSubmit" novalidate>
     <h2 class="title">{{ t('auth.login.title') }}</h2>
 
-
+    <!-- Banner de error general -->
     <div v-if="errors.general" class="error-banner">
       ⚠️ {{ errors.general }}
     </div>
 
-
+    <!-- Botón Google -->
     <button type="button" class="google-btn" @click="onGoogleLogin">
       {{ t('auth.login.continueWithGoogle') }}
     </button>
 
-
+    <!-- Email o Username -->
     <label class="field">
       <span class="label">{{ t('auth.login.username') }}</span>
       <input
@@ -115,7 +120,7 @@ function onGoogleLogin () {
       </small>
     </label>
 
-
+    <!-- Password -->
     <label class="field">
       <span class="label">{{ t('auth.login.password') }}</span>
       <input
@@ -131,12 +136,12 @@ function onGoogleLogin () {
       </small>
     </label>
 
-
+    <!-- Submit Button -->
     <button class="btn" type="submit" :disabled="!canSubmit">
-      {{ t('auth.login.register') /* aquí tu key actual para "Log In" */ }}
+      {{ t('auth.login.register')  }}
     </button>
 
-
+    <!-- Link a Register -->
     <p class="hint">
       {{ t('auth.login.noAccount') }}
       <RouterLink :to="props.registerRoute" class="link">

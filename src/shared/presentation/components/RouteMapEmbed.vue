@@ -87,7 +87,7 @@ const showRouteMarkers = async () => {
     const originLocation = await geocodeAddress(props.origin)
     const destLocation = await geocodeAddress(props.destination)
 
-    // Crear marcador de origen (verde)
+
     const originMarker = new google.maps.Marker({
       position: originLocation,
       map: map,
@@ -96,7 +96,7 @@ const showRouteMarkers = async () => {
       animation: google.maps.Animation.DROP
     })
 
-    // Crear marcador de destino (rojo)
+
     const destMarker = new google.maps.Marker({
       position: destLocation,
       map: map,
@@ -107,13 +107,13 @@ const showRouteMarkers = async () => {
 
     markers.push(originMarker, destMarker)
 
-    // Ajustar el mapa para mostrar ambos marcadores
+
     const bounds = new google.maps.LatLngBounds()
     bounds.extend(originLocation)
     bounds.extend(destLocation)
     map.fitBounds(bounds)
 
-    // Emitir que la ruta está lista (con las ubicaciones)
+
     emit('routeReady', {
       origin: props.origin,
       destination: props.destination,
@@ -123,7 +123,7 @@ const showRouteMarkers = async () => {
 
   } catch (error) {
     console.error('Error showing route markers:', error)
-    alert('No se pudieron encontrar las direcciones. Por favor, verifica que sean correctas.')
+
   }
 }
 
