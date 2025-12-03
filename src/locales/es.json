@@ -91,7 +91,7 @@
   "page-not-found": {
     "title": "Página No Encontrada",
     "content": "La ruta {unavailable-route} no está disponible.",
-    "go-home": "Ir al Inicio"
+    "go-home": "Volver al inicio"
   },
   "profile": {
     "title": "Perfil",
@@ -101,7 +101,7 @@
     "favoriteRoutes": "Rutas Favoritas",
     "travelHistory": "Historial de Viajes",
     "notifications": "Notificaciones",
-    "accountSettings": "Configuración de Cuenta",
+    "accountSettings": "Configuración de cuenta",
     "details": "Detalles",
     "logout": "Cerrar Sesión"
   },
@@ -138,33 +138,137 @@
     "hidePassword": "Ocultar contraseña"
   },
   "errors": {
-    "occurred": "Ocurrieron errores"
+    "occurred": "Ocurrieron errores",
+    "general": "ERROR",
+
+    "auth": {
+      "invalidCredentials": "Usuario o contraseña incorrectos",
+      "userNotFound": "Usuario no encontrado",
+      "emailAlreadyExists": "Este correo ya está registrado",
+      "usernameAlreadyExists": "Este nombre de usuario ya está en uso",
+      "passwordTooShort": "La contraseña debe tener al menos 6 caracteres",
+      "passwordMismatch": "Las contraseñas no coinciden",
+      "emailRequired": "El correo es requerido",
+      "emailInvalid": "Correo inválido",
+      "usernameRequired": "El nombre de usuario es requerido",
+      "passwordRequired": "La contraseña es requerida",
+      "sessionExpired": "Tu sesión ha expirado",
+      "unauthorizedAccess": "Acceso no autorizado"
+    },
+
+    "form": {
+      "requiredField": "Este campo es requerido",
+      "invalidFormat": "Formato inválido",
+      "minLength": "Mínimo {min} caracteres",
+      "maxLength": "Máximo {max} caracteres",
+      "invalidEmail": "Correo electrónico inválido",
+      "invalidPhone": "Número de teléfono inválido",
+      "invalidUrl": "URL inválida"
+    },
+
+    "network": {
+      "connectionError": "Error de conexión",
+      "timeout": "La solicitud tardó demasiado",
+      "serverError": "Error del servidor",
+      "notFound": "Recurso no encontrado",
+      "forbidden": "Acceso prohibido",
+      "offline": "No hay conexión a internet"
+    },
+
+    "data": {
+      "loadFailed": "Error al cargar los datos",
+      "saveFailed": "Error al guardar",
+      "deleteFailed": "Error al eliminar",
+      "updateFailed": "Error al actualizar",
+      "notFound": "Datos no encontrados",
+      "invalidData": "Datos inválidos"
+    },
+
+    "file": {
+      "uploadFailed": "Error al subir el archivo",
+      "invalidType": "Tipo de archivo no permitido",
+      "tooLarge": "El archivo es demasiado grande",
+      "notFound": "Archivo no encontrado"
+    },
+
+    "validation": {
+      "required": "Campo requerido",
+      "email": "Email inválido",
+      "phone": "Teléfono inválido",
+      "url": "URL inválida",
+      "number": "Debe ser un número",
+      "min": "El valor mínimo es {min}",
+      "max": "El valor máximo es {max}",
+      "pattern": "Formato no válido"
+    },
+
+    "company": {
+      "notFound": "Empresa no encontrada",
+      "registrationFailed": "Error al registrar la empresa",
+      "updateFailed": "Error al actualizar información",
+      "rucInvalid": "RUC inválido",
+      "fleetSizeInvalid": "Tamaño de flota inválido"
+    },
+
+    "bus": {
+      "notFound": "Bus no encontrado",
+      "addFailed": "Error al agregar bus",
+      "updateFailed": "Error al actualizar bus",
+      "deleteFailed": "Error al eliminar bus",
+      "plateInvalid": "Placa inválida",
+      "plateExists": "Esta placa ya está registrada"
+    },
+
+    "route": {
+      "notFound": "Ruta no encontrada",
+      "saveFailed": "Error al guardar ruta",
+      "searchFailed": "Error al buscar rutas",
+      "invalidOrigin": "Origen inválido",
+      "invalidDestination": "Destino inválido"
+    },
+
+    "location": {
+      "permissionDenied": "Permiso de ubicación denegado",
+      "unavailable": "Ubicación no disponible",
+      "timeout": "Tiempo de espera agotado",
+      "unknown": "Error desconocido al obtener ubicación"
+    },
+
+    "settings": {
+      "saveFailed": "Error al guardar configuración",
+      "loadFailed": "Error al cargar configuración",
+      "invalidValue": "Valor inválido"
+    },
+
+    "unexpected": "Error inesperado. Por favor intenta nuevamente.",
+    "tryAgain": "Por favor intenta nuevamente",
+    "contactSupport": "Si el problema persiste, contacta a soporte"
   },
   "brand": {
     "name": "BusTrack"
   },
   "nav": {
-    "searchRoute": "Buscar ruta",
+    "searchRoute": "Buscar Ruta",
     "notifications": "Notificaciones",
-    "busStops": "Paraderos cercanos",
+    "busStops": "Paraderos Cercanos",
     "profile": "Perfil"
   },
   "auth": {
     "login": {
       "title": "Iniciar Sesión",
-      "continueWithGoogle": "Continuar con Google",
+      "continueWithGoogle": "Continua con Google",
+      "emailOrUsername": "Gmail",
+      "emailOrUsernamePlaceholder": "Coloca tu gmail",
       "username": "Gmail",
-      "emailOrUsername": "Correo o usuario",
-      "emailOrUsernamePlaceholder": "Ingresa tu gmail",
       "password": "Contraseña",
-      "passwordPlaceholder": "Ingresa tu contraseña",
+      "passwordPlaceholder": "Coloca tu contraseña",
       "forgot": "¿Olvidaste tu contraseña?",
       "continue": "Continuar",
       "continuing": "Continuando...",
       "submit": "Iniciar Sesión",
-      "noAccount": "¿No tienes una cuenta?",
-      "register": "Iniciar Sesión",
-      "createAccount": "Crear una",
+      "noAccount": "¿No tienes cuenta?",
+      "register": "Iniciar Sesion",
+      "createAccount": "Crear cuenta",
       "errors": {
         "usernameRequired": "Ingresa tu usuario",
         "passwordRequired": "Ingresa tu contraseña"
@@ -172,13 +276,13 @@
     },
     "register": {
       "title": "Crea tu cuenta",
-      "continueWithGoogle": "Continuar con Google",
+      "continueWithGoogle": "Continúa con Google",
       "email": "Correo",
       "emailPlaceholder": "Ingresa tu correo",
       "username": "Usuario",
-      "usernamePlaceholder": "Elige un usuario",
+      "usernamePlaceholder": "Elige un nombre de usuario",
       "password": "Contraseña",
-      "passwordPlaceholder": "Ingresa al menos 6 caracteres",
+      "passwordPlaceholder": "Coloca mínimo 6 caracteres",
       "create": "Crear Cuenta",
       "haveAccount": "¿Ya tienes una cuenta?",
       "signIn": "Inicia Sesión",
@@ -186,38 +290,28 @@
         "emailRequired": "Ingresa tu correo",
         "emailInvalid": "Correo inválido",
         "usernameRequired": "Ingresa tu usuario",
-        "passwordMin": "Al menos 6 caracteres",
+        "passwordMin": "Mínimo 6 caracteres",
         "confirmRequired": "Confirma tu contraseña",
         "confirmMismatch": "Las contraseñas no coinciden"
       },
       "confirmPassword": "Confirma tu contraseña",
-      "confirmPasswordPlaceholder": "Ingresa tu contraseña"
+      "confirmPasswordPlaceholder": "Coloca tu contraseña"
     }
   },
   "routeForm": {
     "originLabel": "Dirección de origen",
-    "placeholder": "Ingresa la dirección",
+    "placeholder": "Coloca la dirección",
     "search": "Buscar",
     "searching": "Buscando...",
-    "success": "✅ Ruta encontrada exitosamente",
+    "success": "✅ Ruta encontrada satisfactoriamente",
     "notFound": "No se encontraron rutas.",
     "estimatedTime": "Tiempo estimado de ruta:",
     "nextBus": "Próximo bus en:"
   },
-  "routeResults": {
-    "title": "Información de tu viaje",
-    "origin": "Origen",
-    "destination": "Destino",
-    "saveRoute": "Guardar ruta",
-    "saving": "Guardando...",
-    "openInGoogleMaps": "Ver rutas en Google Maps",
-    "saveSuccess": "✓ Ruta guardada correctamente",
-    "saveError": "Ocurrió un error al guardar la ruta"
-  },
   "busStops": {
     "title": "Paraderos Cercanos",
     "passingBuses": "Buses que pasan:",
-    "directions": "Direcciones",
+    "directions": "Cómo llegar",
     "notifyArrival": "Notificar llegada"
   },
   "travelHistory": {
@@ -243,17 +337,17 @@
   "companyRegister": {
     "register": {
       "title": "Crea tu cuenta",
-      "companyName": "Nombre de la empresa",
+      "companyName": "Nombre de la Empresa",
       "companyNamePlaceholder": "Ingresa el nombre de la empresa",
       "ruc": "RUC",
       "rucPlaceholder": "Ingresa el RUC",
       "corporateEmail": "Correo corporativo",
-      "corporateEmailPlaceholder": "Ingresa correo corporativo",
+      "corporateEmailPlaceholder": "Ingresa el correo corporativo",
       "address": "Dirección",
       "addressPlaceholder": "Ingresa la dirección",
       "password": "Contraseña",
       "passwordPlaceholder": "Ingresa tu contraseña",
-      "confirmPassword": "Confirmar contraseña",
+      "confirmPassword": "Confirmación de contraseña",
       "confirmPasswordPlaceholder": "Confirma tu contraseña",
       "passwordMismatch": "Las contraseñas no coinciden",
       "fleetSize": "Tamaño de flota",
@@ -264,12 +358,122 @@
     }
   },
   "companyNav": {
-    "dashboard": "Panel",
     "monitoring": "Monitoreo",
     "alerts": "Alertas",
-    "reports": "Reportes",
     "fleet": "Flota",
     "settings": "Configuración"
+  },
+  "settings": {
+    "title": "Configuración Empresarial",
+    "companyInfo": {
+      "title": "Información de la Empresa",
+      "name": "Nombre de la Empresa",
+      "namePlaceholder": "Ingrese el nombre de la empresa",
+      "ruc": "RUC",
+      "rucPlaceholder": "Ingrese el RUC",
+      "address": "Dirección",
+      "addressPlaceholder": "Ingrese la dirección"
+    },
+
+    "alerts": {
+      "title": "Preferencias de Alertas",
+      "delayMinutes": "Minutos de Retraso para Alerta",
+      "types": "Tipos de Alertas",
+      "delays": "Retrasos",
+      "routeDeviations": "Desvíos de ruta",
+      "incidents": "Incidentes",
+      "maintenance": "Mantenimiento",
+      "traffic": "Tráfico intenso"
+    },
+    "security": {
+      "title": "Seguridad",
+      "currentPassword": "Contraseña Actual",
+      "currentPasswordPlaceholder": "Ingrese contraseña actual",
+      "newPassword": "Nueva Contraseña",
+      "newPasswordPlaceholder": "Ingrese nueva contraseña",
+      "confirmPassword": "Confirmar Nueva Contraseña",
+      "confirmPasswordPlaceholder": "Confirme nueva contraseña"
+    },
+    "actions": {
+      "saveChanges": "Guardar Cambios",
+      "changePassword": "Cambiar contraseña",
+      "logout": "Cerrar Sesión"
+    },
+    "messages": {
+      "companySaved": "Información guardada exitosamente",
+      "preferencesSaved": "Preferencias guardadas exitosamente",
+      "passwordChanged": "Contraseña cambiada exitosamente",
+      "passwordMismatch": "Las contraseñas no coinciden",
+      "confirmLogout": "¿Está seguro que desea cerrar sesión?"
+    }
+  },
+  "fleet": {
+    "title": "Administración de Flota",
+    "stats": {
+      "total": "Total de buses",
+      "active": "Activos",
+      "maintenance": "En mantenimiento",
+      "inactive": "Inactivos"
+    },
+    "table": {
+      "id": "ID del Bus",
+      "plate": "Placa",
+      "route": "Ruta Asignada",
+      "status": "Estado",
+      "driver": "Conductor",
+      "actions": "Acciones"
+    },
+    "status": {
+      "active": "Activo",
+      "maintenance": "Mantenimiento",
+      "inactive": "Inactivo"
+    },
+    "actions": {
+      "addBus": "Agregar Bus",
+      "edit": "Editar",
+      "details": "Detalles",
+      "save": "Guardar",
+      "cancel": "Cancelar",
+      "close": "Cerrar"
+    },
+    "modal": {
+      "addTitle": "Agregar Nuevo Bus",
+      "editTitle": "Editar Bus",
+      "detailsTitle": "Detalles del Bus"
+    },
+    "form": {
+      "id": "ID del Bus",
+      "plate": "Placa",
+      "platePlaceholder": "Ej: ABC-123",
+      "route": "Ruta Asignada",
+      "routePlaceholder": "Ej: Miraflores - San Isidro",
+      "status": "Estado",
+      "driver": "Conductor",
+      "driverPlaceholder": "Nombre del conductor"
+    },
+    "messages": {
+      "busAdded": "Bus agregado exitosamente",
+      "busUpdated": "Bus actualizado exitosamente"
+    }
+  },
+
+
+  "monitoring": {
+    "title": "Monitoreo en Tiempo Real",
+    "refresh": "Actualizar Datos",
+    "refreshing": "Cargando...",
+    "updated": "Datos de flota actualizados correctamente",
+    "expandMap": "Abrir en Google Maps",
+    "status": {
+      "on_time": "En horario",
+      "delayed": "Retraso {minutes} min",
+      "out_of_service": "Fuera de servicio"
+    },
+    "details": {
+      "route": "Ruta",
+      "driver": "Conductor",
+      "updated": "Última actualización"
+    }
   },
   "alerts": {
     "title": "Alertas Internas",

@@ -13,7 +13,7 @@
     "confirmClearAll": "Do you want to delete all notifications?",
     "empty": {
       "title": "You have no notifications",
-      "subtitle": "When you save routes or there are updates, they will appear here"
+      "subtitle": "Updates and saved routes will appear here"
     },
     "remove": "Remove notification",
     "timeAgo": {
@@ -64,14 +64,14 @@
   "authoring-phrase": {
     "intro": "Made with",
     "use": "using",
-    "author": "by {brand} Developer Team"
+    "author": "by {brand} Development Team"
   },
   "about": {
     "title": "About Us",
-    "content": "BusTrack is a mobilization Platform, part of DelComp Corporation."
+    "content": "BusTrack is a mobility platform, part of DelComp Corporation."
   },
   "home": {
-    "searchTitle": "Search route",
+    "searchTitle": "Search Route",
     "gettingLocation": "Getting location...",
     "locationUnavailable": "Location unavailable",
     "locationError": "Error getting location",
@@ -90,13 +90,13 @@
   },
   "page-not-found": {
     "title": "Page Not Found",
-    "content": "The path {unavailable-route} is not available.",
+    "content": "The route {unavailable-route} is not available.",
     "go-home": "Go Home"
   },
   "profile": {
     "title": "Profile",
     "name": "Name",
-    "email": "Gmail",
+    "email": "Email",
     "password": "Password",
     "favoriteRoutes": "Favorite Routes",
     "travelHistory": "Travel History",
@@ -107,7 +107,7 @@
   },
   "favoriteRoutes": {
     "back": "Back",
-    "title": "Favorite routes",
+    "title": "Favorite Routes",
     "emptyTitle": "You don't have any saved routes",
     "emptySubtitle": "Save your frequent routes to access them quickly",
     "searchButton": "Search routes",
@@ -128,7 +128,6 @@
     "password": "Password",
     "passwordPlaceholder": "Enter your password",
     "saveChanges": "Save Changes",
-
     "photoSoon": "This feature will be available soon",
     "errorAllFields": "Please fill in all fields",
     "errorInvalidEmail": "Please enter a valid email",
@@ -138,7 +137,99 @@
     "hidePassword": "Hide password"
   },
   "errors": {
-    "occurred": "Errors occurred"
+    "occurred": "An error occurred",
+    "general": "ERROR",
+    "auth": {
+      "invalidCredentials": "Incorrect username or password",
+      "userNotFound": "User not found",
+      "emailAlreadyExists": "This email is already registered",
+      "usernameAlreadyExists": "This username is already taken",
+      "passwordTooShort": "Password must be at least 6 characters",
+      "passwordMismatch": "Passwords do not match",
+      "emailRequired": "Email is required",
+      "emailInvalid": "Invalid email",
+      "usernameRequired": "Username is required",
+      "passwordRequired": "Password is required",
+      "sessionExpired": "Your session has expired",
+      "unauthorizedAccess": "Unauthorized access"
+    },
+    "form": {
+      "requiredField": "This field is required",
+      "invalidFormat": "Invalid format",
+      "minLength": "Minimum {min} characters",
+      "maxLength": "Maximum {max} characters",
+      "invalidEmail": "Invalid email address",
+      "invalidPhone": "Invalid phone number",
+      "invalidUrl": "Invalid URL"
+    },
+    "network": {
+      "connectionError": "Connection error",
+      "timeout": "Request timed out",
+      "serverError": "Server error",
+      "notFound": "Resource not found",
+      "forbidden": "Access forbidden",
+      "offline": "No internet connection"
+    },
+    "data": {
+      "loadFailed": "Failed to load data",
+      "saveFailed": "Failed to save",
+      "deleteFailed": "Failed to delete",
+      "updateFailed": "Failed to update",
+      "notFound": "Data not found",
+      "invalidData": "Invalid data"
+    },
+    "file": {
+      "uploadFailed": "Failed to upload file",
+      "invalidType": "File type not allowed",
+      "tooLarge": "File is too large",
+      "notFound": "File not found"
+    },
+    "validation": {
+      "required": "Required field",
+      "email": "Invalid email",
+      "phone": "Invalid phone",
+      "url": "Invalid URL",
+      "number": "Must be a number",
+      "min": "Minimum value is {min}",
+      "max": "Maximum value is {max}",
+      "pattern": "Invalid format"
+    },
+    "company": {
+      "notFound": "Company not found",
+      "registrationFailed": "Failed to register company",
+      "updateFailed": "Failed to update information",
+      "rucInvalid": "Invalid Tax ID",
+      "fleetSizeInvalid": "Invalid fleet size"
+    },
+    "bus": {
+      "notFound": "Bus not found",
+      "addFailed": "Failed to add bus",
+      "updateFailed": "Failed to update bus",
+      "deleteFailed": "Failed to delete bus",
+      "plateInvalid": "Invalid plate",
+      "plateExists": "This plate is already registered"
+    },
+    "route": {
+      "notFound": "Route not found",
+      "saveFailed": "Failed to save route",
+      "searchFailed": "Failed to search routes",
+      "invalidOrigin": "Invalid origin",
+      "invalidDestination": "Invalid destination"
+    },
+    "location": {
+      "permissionDenied": "Location permission denied",
+      "unavailable": "Location unavailable",
+      "timeout": "Location timeout",
+      "unknown": "Unknown location error"
+    },
+    "settings": {
+      "saveFailed": "Failed to save settings",
+      "loadFailed": "Failed to load settings",
+      "invalidValue": "Invalid value"
+    },
+    "unexpected": "Unexpected error. Please try again.",
+    "tryAgain": "Please try again",
+    "contactSupport": "If the problem persists, contact support"
   },
   "brand": {
     "name": "BusTrack"
@@ -153,9 +244,9 @@
     "login": {
       "title": "Log In",
       "continueWithGoogle": "Continue with Google",
-      "username": "Gmail",
+      "username": "Email",
       "emailOrUsername": "Email or username",
-      "emailOrUsernamePlaceholder": "Enter your gmail",
+      "emailOrUsernamePlaceholder": "Enter your email",
       "password": "Password",
       "passwordPlaceholder": "Enter your password",
       "forgot": "Forgot your password?",
@@ -163,10 +254,10 @@
       "continuing": "Continuing...",
       "submit": "Log In",
       "noAccount": "Don't have an account?",
-      "register": "Log In",
+      "register": "Sign Up",
       "createAccount": "Create one",
       "errors": {
-        "usernameRequired": "Enter your username",
+        "usernameRequired": "Enter your username or email",
         "passwordRequired": "Enter your password"
       }
     },
@@ -191,7 +282,7 @@
         "confirmMismatch": "Passwords do not match"
       },
       "confirmPassword": "Confirm your password",
-      "confirmPasswordPlaceholder": "Enter your password"
+      "confirmPasswordPlaceholder": "Re-enter your password"
     }
   },
   "routeForm": {
@@ -210,7 +301,7 @@
     "destination": "Destination",
     "saveRoute": "Save route",
     "saving": "Saving...",
-    "openInGoogleMaps": "View routes on Google Maps",
+    "openInGoogleMaps": "View route on Google Maps",
     "saveSuccess": "✓ Route saved successfully",
     "saveError": "An error occurred while saving the route"
   },
@@ -222,8 +313,8 @@
   },
   "travelHistory": {
     "back": "Back",
-    "title": "Travel history",
-    "clearHistory": "Clear user history",
+    "title": "Travel History",
+    "clearHistory": "Clear history",
     "emptyTitle": "No travel history yet",
     "emptySubtitle": "Your searched routes will appear here",
     "searchRoute": "Search a route",
@@ -246,7 +337,7 @@
       "companyName": "Company name",
       "companyNamePlaceholder": "Enter the company name",
       "ruc": "Tax ID",
-      "rucPlaceholder": "Enter the tax ID",
+      "rucPlaceholder": "Enter the Tax ID",
       "corporateEmail": "Corporate email",
       "corporateEmailPlaceholder": "Enter corporate email",
       "address": "Address",
@@ -264,14 +355,120 @@
     }
   },
   "companyNav": {
-    "dashboard": "Dashboard",
     "monitoring": "Monitoring",
     "alerts": "Alerts",
-    "reports": "Reports",
     "fleet": "Fleet",
     "settings": "Settings"
   },
-
+  "settings": {
+    "title": "Business Settings",
+    "companyInfo": {
+      "title": "Company Information",
+      "name": "Company Name",
+      "namePlaceholder": "Enter company name",
+      "ruc": "Tax ID",
+      "rucPlaceholder": "Enter Tax ID",
+      "address": "Address",
+      "addressPlaceholder": "Enter address"
+    },
+    "alerts": {
+      "title": "Alert Preferences",
+      "delayMinutes": "Delay Minutes for Alert",
+      "types": "Alert Types",
+      "delays": "Delays",
+      "routeDeviations": "Route deviations",
+      "incidents": "Incidents",
+      "maintenance": "Maintenance",
+      "traffic": "Heavy traffic"
+    },
+    "security": {
+      "title": "Security",
+      "currentPassword": "Current Password",
+      "currentPasswordPlaceholder": "Enter current password",
+      "newPassword": "New Password",
+      "newPasswordPlaceholder": "Enter new password",
+      "confirmPassword": "Confirm New Password",
+      "confirmPasswordPlaceholder": "Confirm new password"
+    },
+    "actions": {
+      "saveChanges": "Save Changes",
+      "changePassword": "Change Password",
+      "logout": "Logout"
+    },
+    "messages": {
+      "companySaved": "Information saved successfully",
+      "preferencesSaved": "Preferences saved successfully",
+      "passwordChanged": "Password changed successfully",
+      "passwordMismatch": "Passwords do not match",
+      "confirmLogout": "Are you sure you want to logout?"
+    }
+  },
+  "fleet": {
+    "title": "Fleet Management",
+    "stats": {
+      "total": "Total buses",
+      "active": "Active",
+      "maintenance": "In maintenance",
+      "inactive": "Inactive"
+    },
+    "table": {
+      "id": "Bus ID",
+      "plate": "License Plate",
+      "route": "Assigned Route",
+      "status": "Status",
+      "driver": "Driver",
+      "actions": "Actions"
+    },
+    "status": {
+      "active": "Active",
+      "maintenance": "Maintenance",
+      "inactive": "Inactive"
+    },
+    "actions": {
+      "addBus": "Add Bus",
+      "edit": "Edit",
+      "details": "Details",
+      "save": "Save",
+      "cancel": "Cancel",
+      "close": "Close"
+    },
+    "modal": {
+      "addTitle": "Add New Bus",
+      "editTitle": "Edit Bus",
+      "detailsTitle": "Bus Details"
+    },
+    "form": {
+      "id": "Bus ID",
+      "plate": "License Plate",
+      "platePlaceholder": "Ex: ABC-123",
+      "route": "Assigned Route",
+      "routePlaceholder": "Ex: Miraflores - San Isidro",
+      "status": "Status",
+      "driver": "Driver",
+      "driverPlaceholder": "Driver name"
+    },
+    "messages": {
+      "busAdded": "Bus added successfully",
+      "busUpdated": "Bus updated successfully"
+    }
+  },
+  "monitoring": {
+    "title": "Real-Time Monitoring",
+    "refresh": "Refresh Data",
+    "refreshing": "Loading...",
+    "updated": "Fleet data updated successfully",
+    "expandMap": "Open in Google Maps",
+    "status": {
+      "on_time": "On Time",
+      "delayed": "Delayed {minutes} min",
+      "out_of_service": "Out of Service"
+    },
+    "details": {
+      "route": "Route",
+      "driver": "Driver",
+      "updated": "Last update"
+    }
+  },
   "alerts": {
     "title": "Internal Alerts",
     "empty": "No pending alerts found",
