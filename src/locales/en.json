@@ -138,6 +138,7 @@
   },
   "errors": {
     "occurred": "An error occurred",
+    "missingFields": "Please fill in all fields",
     "general": "ERROR",
     "auth": {
       "invalidCredentials": "Incorrect username or password",
@@ -498,6 +499,22 @@
     },
     "actions": {
       "resolve": "Mark as Resolved"
-    }
+    },
+
+    "create": {
+      "button": "New Alert",
+      "title": "Report Incident",
+      "type": "Incident Type",
+      "severity": "Severity Level",
+      "busId": "Bus ID",
+      "busIdPlaceholder": "Ex: 204",
+      "route": "Affected Route",
+      "routePlaceholder": "Ex: Miraflores - Centro",
+      "save": "Publish Alert",
+      "cancel": "Cancel"
+      },
+      "errors": {
+        "missingFields": "Please fill in all fields"
+      }
   }
 }

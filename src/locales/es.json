@@ -139,6 +139,7 @@
   },
   "errors": {
     "occurred": "Ocurrieron errores",
+    "missingFields": "Por favor completa todos los campos",
     "general": "ERROR",
 
     "auth": {
@@ -503,6 +504,21 @@
     },
     "actions": {
       "resolve": "Marcar Resuelta"
+    },
+    "create": {
+      "button": "Nueva Alerta",
+      "title": "Reportar Incidencia",
+      "type": "Tipo de Incidencia",
+      "severity": "Nivel de Gravedad",
+      "busId": "ID del Bus",
+      "busIdPlaceholder": "Ej: 204",
+      "route": "Ruta Afectada",
+      "routePlaceholder": "Ej: Miraflores - Centro",
+      "save": "Publicar Alerta",
+      "cancel": "Cancelar"
+    },
+    "errors": {
+      "missingFields": "Por favor completa todos los campos"
     }
   }
 }
