@@ -474,6 +474,44 @@
       "route": "Ruta",
       "driver": "Conductor",
       "updated": "Última actualización"
+    },
+    "monitoring": {
+      "title": "Monitoreo en Tiempo Real",
+      "addBus": "Agregar Bus",
+      "refresh": "Actualizar Datos",
+      "refreshing": "Cargando...",
+      "updated": "Datos de flota actualizados correctamente",
+      "confirmDelete": "¿Estás seguro de que deseas dejar de monitorear este bus?",
+      "deleteTooltip": "Eliminar tarjeta",
+      "empty": "No hay buses en monitoreo actualmente.",
+      "expandMap": "Abrir en Google Maps",
+      "status": {
+        "on_time": "En horario",
+        "delayed": "Retraso {minutes} min",
+        "delayed_generic": "Con Retraso",
+        "out_of_service": "Fuera de servicio"
+      },
+      "details": {
+        "route": "Ruta",
+        "driver": "Conductor",
+        "updated": "Última actualización"
+      },
+      "create": {
+        "title": "Monitorear Nuevo Bus",
+        "busId": "Número de Bus",
+        "route": "Ruta Asignada",
+        "driver": "Conductor",
+        "status": "Estado Inicial",
+        "save": "Agregar",
+        "cancel": "Cancelar"
+      },
+      "messages": {
+        "busAdded": "Bus {busId} agregado al panel",
+        "busDeleted": "Bus {busId} eliminado del panel"
+      },
+      "errors": {
+        "missingFields": "Por favor completa todos los campos del bus"
+      }
     }
   },
   "alerts": {
