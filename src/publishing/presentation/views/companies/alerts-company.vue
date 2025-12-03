@@ -7,14 +7,27 @@ import { useI18n } from 'vue-i18n'
 const { t } = useI18n()
 const alertsStore = useAlertsStore()
 
+// --- ESTADO DE FILTROS ---
 const filters = ref({
   type: '',
   severity: '',
   status: ''
 })
 
+// --- ESTADO DEL MODAL DE CREACIÓN ---
+const showCreateModal = ref(false)
+const newAlert = ref({
+  type: 'traffic',
+  severity: 'medium',
+  busId: '',
+  route: ''
+})
+
 const filteredAlerts = computed(() => {
-  return alertsStore.getAllAlerts.filter(alert => {
+  // Ordenamos para que las nuevas salgan primero (reverse)
+  const list = [...alertsStore.getAllAlerts].sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp))
+
+  return list.filter(alert => {
     const matchType = !filters.value.type || alert.type === filters.value.type
     const matchSeverity = !filters.value.severity || alert.severity === filters.value.severity
     const matchStatus = !filters.value.status || alert.status === filters.value.status
@@ -22,13 +35,43 @@ const filteredAlerts = computed(() => {
   })
 })
 
+// --- ACCIONES ---
+
+// 1. Resolver Alerta
 const handleResolve = (id) => {
   if (confirm(t('alerts.confirmResolve'))) {
     alertsStore.markAsResolved(id)
   }
 }
 
-// Función auxiliar para las clases dinámicas de gravedad
+// 2. Abrir Modal
+const openCreateModal = () => {
+  // Resetear formulario
+  newAlert.value = { type: 'traffic', severity: 'medium', busId: '', route: '' }
+  showCreateModal.value = true
+}
+
+// 3. Crear Alerta
+const createAlert = () => {
+  if (!newAlert.value.busId || !newAlert.value.route) {
+    alert(t('alerts.errors.missingFields'))
+    return
+  }
+
+  const autoTitle = t(`alerts.types.${newAlert.value.type}`)
+
+  alertsStore.addAlert({
+    title: autoTitle,
+    type: newAlert.value.type,
+    severity: newAlert.value.severity,
+    busId: newAlert.value.busId,
+    route: newAlert.value.route
+  })
+
+  showCreateModal.value = false
+}
+
+// --- UTILIDADES DE ESTILO ---
 const getSeverityClass = (severity) => {
   return severity || 'medium'
 }
@@ -43,6 +86,9 @@ const getSeverityClass = (severity) => {
 
         <div class="alerts-header">
           <h1 class="alerts-title">{{ t('alerts.title') }}</h1>
+          <button @click="openCreateModal" class="create-btn">
+            + {{ t('alerts.create.button') }}
+          </button>
         </div>
 
         <div class="filters-card">
@@ -78,7 +124,6 @@ const getSeverityClass = (severity) => {
         </div>
 
         <div class="alerts-list">
-
           <div v-if="filteredAlerts.length === 0" class="empty-state">
             <div class="empty-icon">🔕</div>
             <p>{{ t('alerts.empty') }}</p>
@@ -104,12 +149,12 @@ const getSeverityClass = (severity) => {
               </p>
 
               <div class="badges-row">
-            <span class="badge" :class="alert.severity">
-              {{ t(`alerts.severity.${alert.severity}`) }}
-            </span>
+                <span class="badge" :class="alert.severity">
+                  {{ t(`alerts.severity.${alert.severity}`) }}
+                </span>
                 <span class="badge status" :class="alert.status">
-              {{ t(`alerts.status.${alert.status}`) }}
-            </span>
+                  {{ t(`alerts.status.${alert.status}`) }}
+                </span>
               </div>
             </div>
 
@@ -130,6 +175,62 @@ const getSeverityClass = (severity) => {
             </button>
           </div>
         </div>
+
+        <!-- MODAL DE CREACIÓN -->
+        <div v-if="showCreateModal" class="modal-backdrop">
+          <div class="modal-card">
+            <h2 class="modal-title">{{ t('alerts.create.title') }}</h2>
+
+            <div class="modal-form">
+              <div class="form-group">
+                <label>{{ t('alerts.create.type') }}</label>
+                <select v-model="newAlert.type">
+                  <option value="detour">{{ t('alerts.types.detour') }}</option>
+                  <option value="traffic">{{ t('alerts.types.traffic') }}</option>
+                  <option value="incident">{{ t('alerts.types.incident') }}</option>
+                  <option value="delay">{{ t('alerts.types.delay') }}</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label>{{ t('alerts.create.severity') }}</label>
+                <select v-model="newAlert.severity">
+                  <option value="high">{{ t('alerts.severity.high') }}</option>
+                  <option value="medium">{{ t('alerts.severity.medium') }}</option>
+                  <option value="low">{{ t('alerts.severity.low') }}</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label>{{ t('alerts.create.busId') }}</label>
+                <input
+                    v-model="newAlert.busId"
+                    type="text"
+                    :placeholder="t('alerts.create.busIdPlaceholder')"
+                >
+              </div>
+
+              <div class="form-group">
+                <label>{{ t('alerts.create.route') }}</label>
+                <input
+                    v-model="newAlert.route"
+                    type="text"
+                    :placeholder="t('alerts.create.routePlaceholder')"
+                >
+              </div>
+            </div>
+
+            <div class="modal-actions">
+              <button @click="showCreateModal = false" class="btn-cancel">
+                {{ t('alerts.create.cancel') }}
+              </button>
+              <button @click="createAlert" class="btn-save">
+                {{ t('alerts.create.save') }}
+              </button>
+            </div>
+          </div>
+        </div>
+
       </div>
     </main>
   </div>
@@ -148,18 +249,22 @@ const getSeverityClass = (severity) => {
 }
 
 /* =========================================
-   Contenedor Principal y Fondo (Tu estilo)
+   Contenedor Principal y Fondo
    ========================================= */
 .alerts-container {
   min-height: 100vh;
   background: linear-gradient(135deg, #f5f7fa 0%, #e8f5e9 100%);
   padding: 2rem;
+  position: relative;
 }
 
 .alerts-header {
   max-width: 1000px;
   margin: 0 auto 2rem;
-  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
 }
 
 .alerts-title {
@@ -168,12 +273,31 @@ const getSeverityClass = (severity) => {
   margin: 0;
   font-weight: 700;
   text-align: center;
-  /* Pequeña sombra de texto para resaltar sobre el fondo */
   text-shadow: 0 1px 2px rgba(0,0,0,0.1);
 }
 
+.create-btn {
+  position: absolute;
+  right: 0;
+  background: #2e7d32;
+  color: white;
+  border: none;
+  padding: 0.8rem 1.5rem;
+  border-radius: 30px;
+  font-weight: bold;
+  font-size: 1rem;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(46, 125, 50, 0.3);
+  transition: all 0.3s ease;
+}
+
+.create-btn:hover {
+  background: #1b5e20;
+  transform: translateY(-2px);
+}
+
 /* =========================================
-   Tarjeta de Filtros (Nuevo estilo acorde)
+   Tarjeta de Filtros
    ========================================= */
 .filters-card {
   max-width: 1000px;
@@ -220,7 +344,7 @@ const getSeverityClass = (severity) => {
 }
 
 /* =========================================
-   Lista y Tarjetas (Adaptado de tu estilo)
+   Lista y Tarjetas
    ========================================= */
 .alerts-list {
   max-width: 1000px;
@@ -248,17 +372,16 @@ const getSeverityClass = (severity) => {
   box-shadow: 0 8px 24px rgba(46, 125, 50, 0.25);
 }
 
-/* Bordes laterales según gravedad */
 .alert-card.high {
-  border-left: 6px solid #e53935; /* Rojo */
+  border-left: 6px solid #e53935;
 }
 
 .alert-card.medium {
-  border-left: 6px solid #fbc02d; /* Amarillo (Precaución) */
+  border-left: 6px solid #fbc02d;
 }
 
 .alert-card.low {
-  border-left: 6px solid #43a047; /* Verde (Info) */
+  border-left: 6px solid #43a047;
 }
 
 .alert-icon {
@@ -285,7 +408,6 @@ const getSeverityClass = (severity) => {
   margin: 0 0 0.75rem 0;
 }
 
-/* Badges dentro de la tarjeta */
 .badges-row {
   display: flex;
   gap: 0.5rem;
@@ -340,7 +462,7 @@ const getSeverityClass = (severity) => {
 }
 
 /* =========================================
-   Empty State (Tu estilo)
+   Empty State
    ========================================= */
 .empty-state {
   max-width: 500px;
@@ -365,6 +487,111 @@ const getSeverityClass = (severity) => {
   font-weight: 600;
 }
 
+/* =========================================
+   MODAL DE CREACIÓN
+   ========================================= */
+.modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  backdrop-filter: blur(4px);
+}
+
+.modal-card {
+  background: white;
+  padding: 2rem;
+  border-radius: 16px;
+  width: 90%;
+  max-width: 500px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+  animation: slideUp 0.3s ease;
+}
+
+@keyframes slideUp {
+  from { transform: translateY(20px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+.modal-title {
+  color: #2e7d32;
+  font-size: 1.5rem;
+  margin-bottom: 1.5rem;
+  text-align: center;
+  font-weight: 700;
+}
+
+.modal-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.form-group label {
+  font-weight: 600;
+  color: #333;
+  font-size: 0.9rem;
+}
+
+.form-group input,
+.form-group select {
+  padding: 0.8rem;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 1rem;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+  border-color: #2e7d32;
+  box-shadow: 0 0 0 3px rgba(46, 125, 50, 0.1);
+}
+
+.modal-actions {
+  display: flex;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.btn-cancel, .btn-save {
+  flex: 1;
+  padding: 0.8rem;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: opacity 0.2s;
+}
+
+.btn-cancel {
+  background: #f5f5f5;
+  color: #666;
+}
+
+.btn-save {
+  background: #2e7d32;
+  color: white;
+}
+
+.btn-save:hover {
+  background: #1b5e20;
+}
+
 /* Responsive */
 @media (max-width: 768px) {
   .alerts-container { padding: 1rem; }
@@ -372,5 +599,7 @@ const getSeverityClass = (severity) => {
   .action-btn { width: 100%; margin-top: 0.5rem; }
   .filters-card { gap: 1rem; }
   .filter-group select { width: 100%; }
+  .alerts-header { flex-direction: column; gap: 1rem; }
+  .create-btn { position: static; width: 100%; }
 }
 </style>

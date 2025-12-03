@@ -465,6 +465,44 @@
       "busUpdated": "Bus updated successfully"
     }
   },
+  "monitoring": {
+    "title": "Real-Time Monitoring",
+    "addBus": "Add Bus",
+    "refresh": "Refresh Data",
+    "refreshing": "Loading...",
+    "updated": "Fleet data updated successfully",
+    "confirmDelete": "Are you sure you want to stop monitoring this bus?",
+    "deleteTooltip": "Remove card",
+    "empty": "No buses currently monitored.",
+    "expandMap": "Open in Google Maps",
+    "status": {
+      "on_time": "On Time",
+      "delayed": "Delayed {minutes} min",
+      "delayed_generic": "Delayed",
+      "out_of_service": "Out of Service"
+    },
+    "details": {
+      "route": "Route",
+      "driver": "Driver",
+      "updated": "Last update"
+    },
+    "create": {
+      "title": "Monitor New Bus",
+      "busId": "Bus Number",
+      "route": "Assigned Route",
+      "driver": "Driver",
+      "status": "Initial Status",
+      "save": "Add Bus",
+      "cancel": "Cancel"
+    },
+    "messages": {
+      "busAdded": "Bus {busId} added to dashboard",
+      "busDeleted": "Bus {busId} removed from dashboard"
+    },
+    "errors": {
+      "missingFields": "Please fill in all bus fields"
+    }
+  },
   "alerts": {
     "title": "Internal Alerts",
     "empty": "No pending alerts found",
@@ -494,6 +532,22 @@
     },
     "actions": {
       "resolve": "Mark as Resolved"
+    },
+
+    "create": {
+      "button": "New Alert",
+      "title": "Report Incident",
+      "type": "Incident Type",
+      "severity": "Severity Level",
+      "busId": "Bus ID",
+      "busIdPlaceholder": "Ex: 204",
+      "route": "Affected Route",
+      "routePlaceholder": "Ex: Miraflores - Centro",
+      "save": "Publish Alert",
+      "cancel": "Cancel"
+    },
+    "errors": {
+      "missingFields": "Please fill in all fields"
     }
   }
 }

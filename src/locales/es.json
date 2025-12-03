@@ -465,6 +465,44 @@
       "busUpdated": "Bus actualizado exitosamente"
     }
   },
+  "monitoring": {
+    "title": "Monitoreo en Tiempo Real",
+    "addBus": "Agregar Bus",
+    "refresh": "Actualizar Datos",
+    "refreshing": "Cargando...",
+    "updated": "Datos de la flota actualizados exitosamente",
+    "confirmDelete": "¿Estás seguro de que deseas dejar de monitorear este bus?",
+    "deleteTooltip": "Eliminar tarjeta",
+    "empty": "No hay buses monitoreados actualmente.",
+    "expandMap": "Abrir en Google Maps",
+    "status": {
+      "on_time": "En horario",
+      "delayed": "Retraso {minutes} min",
+      "delayed_generic": "Retrasado",
+      "out_of_service": "Fuera de servicio"
+    },
+    "details": {
+      "route": "Ruta",
+      "driver": "Conductor",
+      "updated": "Última actualización"
+    },
+    "create": {
+      "title": "Monitorear Nuevo Bus",
+      "busId": "Número de Bus",
+      "route": "Ruta Asignada",
+      "driver": "Conductor",
+      "status": "Estado Inicial",
+      "save": "Agregar Bus",
+      "cancel": "Cancelar"
+    },
+    "messages": {
+      "busAdded": "Bus {busId} agregado al tablero",
+      "busDeleted": "Bus {busId} eliminado del tablero"
+    },
+    "errors": {
+      "missingFields": "Por favor completa todos los campos del bus"
+    }
+  },
   "alerts": {
     "title": "Alertas Internas",
     "empty": "No hay alertas pendientes",
@@ -493,6 +531,21 @@
     },
     "actions": {
       "resolve": "Marcar Resuelta"
+    },
+    "create": {
+      "button": "Nueva Alerta",
+      "title": "Reportar Incidencia",
+      "type": "Tipo de Incidencia",
+      "severity": "Nivel de Gravedad",
+      "busId": "ID del Bus",
+      "busIdPlaceholder": "Ej: 204",
+      "route": "Ruta Afectada",
+      "routePlaceholder": "Ej: Miraflores - Centro",
+      "save": "Publicar Alerta",
+      "cancel": "Cancelar"
+    },
+    "errors": {
+      "missingFields": "Por favor completa todos los campos"
     }
   }
 }
