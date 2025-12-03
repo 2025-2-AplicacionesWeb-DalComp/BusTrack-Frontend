@@ -47,7 +47,7 @@ const newBus = ref({
 
 // --- ACCIONES ---
 
-// 1. Refrescar (Simulación existente)
+// Refrescar (Simulación existente)
 const refreshData = () => {
   isRefreshing.value = true
   setTimeout(() => {
@@ -61,13 +61,13 @@ const refreshData = () => {
   }, 1000)
 }
 
-// 2. Abrir Modal de Creación
+// Abrir Modal de Creación
 const openCreateModal = () => {
   newBus.value = { id: '', route: '', driver: '', status: 'on_time' }
   showCreateModal.value = true
 }
 
-// 3. Crear Bus
+// Crear Bus
 const createBus = () => {
   // Validación simple
   if (!newBus.value.id || !newBus.value.route || !newBus.value.driver) {
@@ -82,7 +82,7 @@ const createBus = () => {
     driver: newBus.value.driver,
     status: newBus.value.status,
     lastUpdate: 0, // Recién creado
-    delayMinutes: newBus.value.status === 'delayed' ? 5 : 0 // Valor por defecto si es retraso
+    delayMinutes: newBus.value.status === 'delayed' ? 5 : 0
   })
 
   // Notificación y cierre
@@ -97,7 +97,7 @@ const createBus = () => {
   showCreateModal.value = false
 }
 
-// 4. Eliminar Bus
+// Eliminar Bus
 const deleteBus = (busId) => {
   if (confirm(t('monitoring.confirmDelete'))) {
     buses.value = buses.value.filter(b => b.id !== busId)
